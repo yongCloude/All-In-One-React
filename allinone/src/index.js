@@ -5,23 +5,40 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from '../node_modules/react-router-dom/index';
 
-import rootReducer from './modules/index';
+import rootReducer, { rootSaga } from './modules/index';
 import { Provider } from '../node_modules/react-redux/es/exports';
 
 
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { composeWithDevTools } from '../node_modules/redux-devtools-extension/index';
+import createSagaMiddleware from 'redux-saga';
+
+import { tempSetUser } from './modules/auth';
 
 
 
 
-
+const sagaMiddleware = createSagaMiddleware();
 
 const store = configureStore({
   reducer: rootReducer,
-  devTools: composeWithDevTools,
+  devTools: composeWithDevTools(),
+  middleware: [...getDefaultMiddleware(), sagaMiddleware]
 });
 
+function loadUser() {
+  try {
+    const user = localStorage.getItem('user');
+    if(!user) return;
+
+    store.dispatch(tempSetUser(JSON.parse(user)));
+  } catch(e){
+    console.log('localStorage is not working');
+  }
+}
+
+sagaMiddleware.run(rootSaga);
+loadUser();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
