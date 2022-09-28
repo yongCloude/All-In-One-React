@@ -1,0 +1,15 @@
+.SubInfo {
+    margin-top: 1rem;
+    color: #868e96;
+
+    .Etc{
+        float: right;
+    }
+
+    span + span::before{
+        color: #adb5bd;
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+        content: '\B7';
+    }
+}

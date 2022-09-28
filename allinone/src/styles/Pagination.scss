@@ -1,0 +1,25 @@
+
+
+.Pagination {
+    width: 320px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+
+    list-style: none;
+    text-align: center;
+
+    padding: 1rem;
+
+    .PageItem{
+        opacity: 0.5;
+        font-weight: bold;
+
+        &:hover {
+            cursor: pointer;
+            color: #ced4da;
+        }
+    }
+
+}

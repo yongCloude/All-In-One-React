@@ -1,0 +1,33 @@
+
+@import '../../node_modules/open-color/';
+
+.AuthForm {
+
+    
+    .StyledInput {
+        font-size: 1rem;
+        border: none;
+        border-bottom: 1px solid #adb5bd;
+        padding-bottom: 0.5rem;
+        outline: none;
+        width: 100%;
+
+        margin-top: 1rem;
+        :focus {
+            color: $oc-teal-7;
+            border-bottom: 1px solid #495057;
+        }
+    }
+
+    .Footer {
+        margin-top: 2rem;
+        text-align: right;
+        a{
+            color: #868e96;
+            text-decoration: underline;
+            :hover{
+                color: #212529;
+            }
+        }
+    }
+}

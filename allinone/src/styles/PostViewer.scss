@@ -1,0 +1,26 @@
+
+
+
+.PostViewer {
+    margin-top: 4rem;
+
+    .PostHead {
+        border-bottom: 1px solid #e9ecef;
+        padding-bottom: 3rem;
+        margin-bottom: 3rem;
+        h1 {
+            font-size: 3rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        
+    }
+    .PostContent {
+        font-size: 1.3125rem;
+        color: #343a40;
+        padding-bottom: 3rem;
+        margin-bottom: 3rem;
+        border-bottom: 1px solid #e9ecef;
+    }
+}

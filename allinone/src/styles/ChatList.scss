@@ -1,0 +1,89 @@
+
+
+
+
+.ChatList {
+
+    
+    margin: 0 auto;
+    margin-top: 3rem;
+    
+    background: #e9ecef;
+    // display: flex;
+    // justify-content: center;
+    width: 720px;
+    height: 600px;
+
+    // border: 1px solid black;
+
+    header {
+        display: flex;
+        justify-content:center;
+        align-items: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+        background: #ffffff;
+        height: 50px;
+    }
+
+    .Chats{
+        background: #BDD1DC;
+        height: 480px;
+        overflow-y: scroll;
+        
+
+    }
+
+    footer {
+        background: #ffffff;
+        height: 70px;
+
+        input {
+            outline: none;
+            border: none;
+            width: 640px;
+            height: 70px;
+        }
+
+        button {
+            height: 70px;
+            width: 64px;
+            border: none;
+            outline: none;
+            opacity: 0.4;
+        }
+    }
+}
+
+.ChatItem {
+    padding: 1rem;
+    
+    .ItemWrapper {
+        width: fit-content;
+        display: flex;
+        justify-content: space-between;
+        #user_name {
+            font-size: 0.875rem;
+        }
+    
+        #item {
+            margin-top: 0.3rem;
+            padding: 0.5rem;
+            font-size: 1rem;
+    
+            width: fit-content;
+            height: 1rem;
+            background: #fff;
+            border-radius: 1rem;
+        }
+
+        #time {
+            display: flex;
+            align-items: flex-end;
+            margin-left: 0.3rem;
+            opacity: 0.4;
+        }
+    }
+    
+
+}
