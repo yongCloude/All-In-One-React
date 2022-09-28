@@ -1,9 +1,17 @@
 import React from 'react';
+import Header from '../common/Header';
+import Responsive from '../common/Responsive';
+import HeaderContainer from '../containers/auth/common/HeaderContainer';
+
 
 const Home = () => {
     return (
-        <div>
-            Home
+        <div className='Home'>
+            <HeaderContainer/>
+            <Responsive>
+
+            안녕하세요
+            </Responsive>
         </div>
     );
 };

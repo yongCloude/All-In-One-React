@@ -1,10 +1,15 @@
 import React from 'react';
+import Responsive from '../../common/Responsive';
+
+import EditorContainer from '../../containers/write/EditorContainer';
+import WriteActionButtonsContainer from '../../containers/write/WriteActionButtonsContainer';
 
 const PostWritePage = () => {
     return (
-        <div>
-            게시판 쓰기
-        </div>
+        <Responsive>
+            <EditorContainer/>
+            <WriteActionButtonsContainer/>
+        </Responsive>
     );
 };
 
