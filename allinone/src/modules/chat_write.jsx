@@ -12,6 +12,8 @@ const [
 const CHANGE_FIELD = 'chat/CHANGE_FIELD'; // 특정 key 값 바꾸기
 const INITIALIZE = 'chat/INITIALIZE'; // 모든 내용 초기화
 
+export const initialize = createAction(INITIALIZE);
+
 export const writeChat = createAction(WRITE_CHAT, ({content, token}) => ({
     content,
     token

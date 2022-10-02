@@ -3,8 +3,8 @@ import ChatList from '../../components/chat/ChatList';
 import SockJsClient from "react-stomp";
 import { useDispatch, useSelector } from '../../../node_modules/react-redux/es/exports';
 import { useEffect } from 'react';
-import { listChats } from '../../modules/chat';
-import { changeField, writeChat } from '../../modules/chat_write';
+import { getChat, listChats } from '../../modules/chat';
+import { changeField, initialize, writeChat } from '../../modules/chat_write';
 
 const ChatRoomContainer = () => {
 
@@ -30,11 +30,14 @@ const ChatRoomContainer = () => {
             content: comment,
             token: user.accessToken,
         }));
+        dispatch(initialize());
+
+        
     }
 
     const onMessageReceived = (msg) => {
         console.log("New Message Received!!", msg);
-        // setMessages(messages.concat(msg));
+        dispatch(getChat(msg));
     }
 
     const customHeaders = {
@@ -45,15 +48,15 @@ const ChatRoomContainer = () => {
 
     return (
         <div className='ChatRoomContainer'>
-            {/* <SockJsClient
-                url={"http://3.39.95.217:8080/chat"}
+            <SockJsClient
+                url={"http://3.39.95.217:8080/chat/"}
                 headers={customHeaders}
                 topics={["/topic/kafka-chat"]}
                 onConnect={console.log('connected!')}
                 onDisconnect={console.log('disconnected!')}
                 onMessage={(msg) => onMessageReceived(msg)}
-                debug={false}
-            /> */}
+                debug={true}
+            />
             <ChatList messages={messages} onClick={onClick} onChange={onChange} comment={comment}/>
         </div>
     );

@@ -11,8 +11,10 @@ const [
     LIST_CHATS_FAILURE,
 ] = createRequestActionTypes('chat/LIST_CHATS');
 
+const GET_CHAT = 'chat/GET_CHAT';
 
 export const listChats = createAction(LIST_CHATS, token => token);
+export const getChat = createAction(GET_CHAT);
 
 const readChatSaga = createRequestSagaReturnSuccess(LIST_CHATS, postAPI.readChat)
 export function* chatSaga(){
@@ -33,6 +35,10 @@ const chat = handleActions(
         [LIST_CHATS_FAILURE]: (state, {payload: error}) => ({
             ...state,
             error,
+        }),
+        [GET_CHAT]: (state, {payload: message}) => ({
+            ...state,
+            messages: state.messages.concat(message)
         }),
     },
     initialState,
