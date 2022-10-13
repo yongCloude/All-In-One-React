@@ -8,10 +8,8 @@ import {
 import PostList from '../../components/posts/PostList';
 import { changeField, initialize, listPosts } from '../../modules/posts';
 import Pagination from '../../components/posts/Pagination';
-import Button from '../../common/Button';
-import Select from 'react-select';
 import SearchBar from '../../common/SearchBar';
-
+import Select from 'react-select';
 const PostListContainer = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(3);
@@ -64,6 +62,24 @@ const PostListContainer = () => {
         setOption={setOption}
         onClick={onClickSearch}
       />
+      <Select
+          onChange={(e) => setOption(e.value)}
+          placeholder="옵션선택"
+          options={[
+            {
+              value: "title",
+              label: "title"
+            },
+            {
+              value: "writer",
+              label: "writer"
+            },
+            {
+              value: "all",
+              label: "all"
+            },
+          ]}
+        />
       <PostList
         loading={loading}
         error={error}
