@@ -18,6 +18,8 @@ const Header = ({user, onLogout}) => {
             <div id="center">
                 <Button to="/posts">게시판</Button>
                 <Button to="/chat">채팅</Button>
+                {user && <Button to="/mychat">나의 채팅방</Button>}
+                
             </div>
             {user ? (
               <div id="right">
