@@ -3,6 +3,8 @@ import { Route, Routes } from '../node_modules/react-router-dom/index';
 import LoginPage from './pages/auth/LoginPage';
 import RegisterPage from './pages/auth/RegisterPage';
 import ChatListPage from './pages/chat/ChatListPage';
+import ChatRoomPage from './pages/chat/ChatRoomPage';
+import MyChatListPage from './pages/chat/MyChatListPage';
 import Home from './pages/Home';
 import PostListPage from './pages/Post/PostListPage';
 import PostViewPage from './pages/Post/PostViewPage';
@@ -18,6 +20,8 @@ const App = () => {
         <Route path='/write' element={<PostWritePage/>}/>
         <Route path='/posts' element={<PostListPage/>}/>
         <Route path='/chat' element={<ChatListPage/>}/>
+        <Route path='/mychat' element={<MyChatListPage/>}/>
+        <Route path='/chat/:channelId' element={<ChatRoomPage/>}/>
         <Route path='/post/:postId' element={<PostViewPage/>}/>
       </Routes>
     </>
