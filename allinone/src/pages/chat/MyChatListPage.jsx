@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Responsive from '../../common/Responsive';
-import HeaderContainer from '../../containers/auth/common/HeaderContainer';
+import HeaderContainer from '../../containers/common/HeaderContainer';
 import MyChatListContainer from '../../containers/chat/MyChatListContainer';
 import '../../styles/MyChatListPage.scss'
 

@@ -1,8 +1,8 @@
 import React from 'react';
-import { useDispatch, useSelector } from '../../../../node_modules/react-redux/es/exports';
-import { useNavigate } from '../../../../node_modules/react-router-dom/index';
-import Header from '../../../common/Header';
-import { logout } from '../../../modules/auth';
+import { useDispatch, useSelector } from '../../../node_modules/react-redux/es/exports';
+import { useNavigate } from '../../../node_modules/react-router-dom/index';
+import Header from '../../common/Header';
+import { logout } from '../../modules/auth';
 
 
 const HeaderContainer = () => {

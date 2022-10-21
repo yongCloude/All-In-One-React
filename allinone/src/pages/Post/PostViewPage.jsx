@@ -1,6 +1,6 @@
 import React from 'react';
 import Responsive from '../../common/Responsive';
-import HeaderContainer from '../../containers/auth/common/HeaderContainer';
+import HeaderContainer from '../../containers/common/HeaderContainer';
 import PostViewerContainer from '../../containers/post/PostViewerContainer';
 import CommentEditContainer from '../../containers/write/CommentEditContainer';
 import CommentWriteActionButtonContainer from '../../containers/write/CommentWriteActionButtonContainer';
