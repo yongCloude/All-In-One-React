@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from '../../../node_modules/react-redux/es/exports';
 import Editor from '../../components/write/Editor';
-import { changeField, initialize } from '../../modules/write';
+import { changeField, initialize } from '../../modules/post/write';
 
 
 const EditorContainer = () => {

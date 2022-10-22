@@ -25,7 +25,9 @@ const ChatList = ({messages, onClick, onChange, comment}) => {
 const ChatItem = ({message}) => {
   
   const [year, month, day, time, min] = message.timestamp;
-  
+
+  if(!message) return null;
+
   return (
     <div className="ChatItem">
       <div id="user_name">{message.user_name}</div>

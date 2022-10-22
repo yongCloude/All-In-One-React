@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import WriteActionButtons from '../../components/write/WriteActionButtons';
-import { updatePost, writePost } from '../../modules/write';
+import { updatePost, writePost } from '../../modules/post/write';
 import { useNavigate } from '../../../node_modules/react-router-dom/index';
 
 const WriteActionButtonsContainer = () => {
