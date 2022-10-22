@@ -26,11 +26,10 @@ export const writeChat = ({token, content, channel_id}) => {
     )
 }
 
-export const createRoom = ({token, roomTitle}) => {
-    console.log('createRoom: ' + roomTitle);
+export const createRoom = ({token, title}) => {
     client.post(
         `/v2/chat`,
-        {ch_title: roomTitle},
+        {ch_title: title},
         {
             headers: {
                 Authorization: 'Bearer ' + token

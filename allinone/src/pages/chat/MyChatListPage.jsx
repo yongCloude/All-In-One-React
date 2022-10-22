@@ -3,7 +3,7 @@
 import React from 'react';
 import Responsive from '../../common/Responsive';
 import HeaderContainer from '../../containers/common/HeaderContainer';
-import MyChatListContainer from '../../containers/chat/MyChatListContainer';
+import MyChatRoomListContainer from '../../containers/chat/MyChatRoomListContainer';
 import '../../styles/MyChatListPage.scss'
 
 const MyChatListPage = () => {
@@ -11,7 +11,7 @@ const MyChatListPage = () => {
         <div className='MyChatListPage'>
             <HeaderContainer/>
             <Responsive>
-                <MyChatListContainer/>
+                <MyChatRoomListContainer/>
             </Responsive>    
         </div>
     );

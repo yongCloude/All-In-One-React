@@ -4,7 +4,7 @@ import React from 'react';
 import { useDispatch, useSelector } from '../../../node_modules/react-redux/es/exports';
 import { useParams } from '../../../node_modules/react-router-dom/index';
 import CommentWriteActionButton from '../../components/write/CommentWriteActionButton';
-import { writeComment } from '../../modules/write';
+import { writeComment } from '../../modules/post/write';
 
 const CommentWriteActionButtonContainer = () => {
     const dispatch = useDispatch();

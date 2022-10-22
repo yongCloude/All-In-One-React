@@ -1,6 +1,6 @@
 import { createAction, handleActions } from "redux-actions";
-import createRequestSaga, { createRequestActionTypes } from "../lib/createRequestSaga";
-import * as postAPI from '../lib/api/posts';
+import createRequestSaga, { createRequestActionTypes } from "../../lib/createRequestSaga";
+import * as postAPI from '../../lib/api/posts';
 import { takeLatest } from 'redux-saga/effects';
 
 
@@ -28,7 +28,7 @@ const post = handleActions(
     {
         [READ_POST_SUCCESS]: (state, {payload: post}) => ({
             ...state,
-            post,
+            post: post.data,
         }),
         [READ_POST_FAILURE]: (state, { payload: error }) => ({
             ...state,

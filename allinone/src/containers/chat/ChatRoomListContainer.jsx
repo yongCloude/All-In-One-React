@@ -8,56 +8,50 @@ import {
 import SearchBar from '../../common/SearchBar';
 import ChatRoom from '../../components/chat/ChatRoom';
 import ChatRoomCreateActionButton from '../../components/chat/ChatRoomCreateActionButton';
-import { listRooms } from '../../modules/chat';
-import { changeField, createRoom } from '../../modules/chat_write';
+import {getRooms} from '../../modules/chat/room';
+import { changeField, createChatRoom, initialize } from '../../modules/chat/create';
 
-const ChatListContainer = () => {
+
+const ChatRoomListContainer = () => {
   const dispatch = useDispatch();
-  const [roomTitle, setRoomTitle] = useState('');
-  
-  const { rooms, error, ch_title, user } = useSelector(({ chat, wChat, auth }) => ({
-    rooms: chat.rooms,
-    error: chat.error,
-    ch_title: wChat.roomTitle,
+  const { rooms, error, title, user } = useSelector(({ chat, createRoom, auth, room }) => ({
+    rooms: room.rooms,
+    error: room.error,
+    title: createRoom.title,
     user: auth.user
   }));
 
   useEffect(() => {
-    dispatch(listRooms({}));
+    dispatch(getRooms({}));
   }, [dispatch]);
 
   const onClick = () => {
-    dispatch(listRooms({title:roomTitle}));
-    setRoomTitle('');
+    dispatch(getRooms({title}));
+    initialize();
   }
 
   const onChange = (e) => {
-    setRoomTitle(e.target.value);
-  }
-
-  const onCreateRoom = (e) => {
     dispatch(changeField({
-        key: 'roomTitle',
-        value: e.target.value
+      key: 'title',
+      value: e.target.value
     }));
   }
 
   const onCreateRoomClick = () => {
-    dispatch(createRoom({
+    dispatch(createChatRoom({
         token: user.accessToken,
-        roomTitle: ch_title,
+        title
     }));
+    window.location.reload();
   }
-
-  
 
   return (
     <>
-      <ChatRoomCreateActionButton onChange={onCreateRoom} createRoom={onCreateRoomClick}/>
+      <ChatRoomCreateActionButton onChange={onChange} createRoom={onCreateRoomClick}/>
       <SearchBar onClick={onClick} onChange={onChange}/>
       <ChatRoom rooms={rooms} error={error} />
     </>
   );
 };
 
-export default ChatListContainer;
+export default ChatRoomListContainer;

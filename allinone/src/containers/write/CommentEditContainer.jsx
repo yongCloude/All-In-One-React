@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from '../../../node_modules/react-redux/es/exports';
 import CommentEditor from '../../components/write/CommentEditor';
-import { changeField, initialize } from '../../modules/write';
+import { changeField, initialize } from '../../modules/post/write';
 
 const CommentEditContainer = () => {
     const dispatch = useDispatch();

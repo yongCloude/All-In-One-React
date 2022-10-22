@@ -1,31 +1,31 @@
 import { handleActions } from "redux-actions";
 import { createAction } from "redux-actions";
-import createRequestSaga, { createRequestActionTypes, createRequestSagaReturnSuccess } from "../lib/createRequestSaga";
-import * as postAPI from '../lib/api/posts';
+import createRequestSaga, { createRequestActionTypes, createRequestSagaReturnSuccess } from "../../lib/createRequestSaga";
+import * as postAPI from '../../lib/api/posts';
 import { takeLatest } from 'redux-saga/effects';
 import post from "./post";
 
-const INITIALIZE = 'write/INITIALIZE'; // 모든 내용 초기화
-const CHANGE_FIELD = 'write/CHANGE_FIELD'; // 특정 key 값 바꾸기
-const SET_ORIGINAL_POST = 'write/SET_ORIGINAL_POST';
+const INITIALIZE = 'write.jsx/INITIALIZE'; // 모든 내용 초기화
+const CHANGE_FIELD = 'write.jsx/CHANGE_FIELD'; // 특정 key 값 바꾸기
+const SET_ORIGINAL_POST = 'write.jsx/SET_ORIGINAL_POST';
 
 const [
     WRITE_POST,
     WRITE_POST_SUCCESS,
     WRITE_POST_FAILURE,
-] = createRequestActionTypes('write/WRITE_POST');
+] = createRequestActionTypes('write.jsx/WRITE_POST');
 
 const [
     UPDATE_POST,
     UPDATE_POST_SUCCESS,
     UPDATE_POST_FAILURE,
-] = createRequestActionTypes('write/UPDATE_POST');
+] = createRequestActionTypes('write.jsx/UPDATE_POST');
 
 const [
     WRITE_COMMENT,
     WRITE_COMMENT_SUCCESS,
     WRITE_COMMENT_FAILURE,
-] = createRequestActionTypes('write/WRITE_COMMENT');
+] = createRequestActionTypes('write.jsx/WRITE_COMMENT');
 
 export const writePost = createAction(WRITE_POST, ({title, content, token}) => ({
     title,

@@ -3,54 +3,54 @@ import ChatList from '../../components/chat/ChatList';
 import SockJsClient from "react-stomp";
 import { useDispatch, useSelector } from '../../../node_modules/react-redux/es/exports';
 import { useEffect } from 'react';
-import { exitRoom, getChat, listChats } from '../../modules/chat';
-import { changeField, initialize, writeChat } from '../../modules/chat_write';
 import { useParams } from '../../../node_modules/react-router-dom/index';
 import Button from '../../common/Button';
+import { loadChats, updateChat } from '../../modules/chat/message';
+import { changeField, initialize, writeMessage } from '../../modules/chat/write';
+import { exit } from '../../modules/chat/room';
 
 const ChatRoomContainer = () => {
 
     const dispatch = useDispatch();
     const {channelId} = useParams();
-    const { user, messages, comment } = useSelector(
-        ({ auth, chat, wChat}) => ({
+    const { user, messages, message } = useSelector(
+        ({ auth, message, wMessage}) => ({
           user: auth.user,
-          messages: chat.messages,
-          comment: wChat.comment,
+          messages: message.messages,
+          message: wMessage.message,
         }),
     );
 
     useEffect(()=>{
-        dispatch(listChats({token: user.accessToken,
+        dispatch(loadChats({token: user.accessToken,
         channel_id: channelId}));
     }, [user, dispatch, channelId]);
 
     const onChange = (e) => {
         dispatch(changeField({
-            "key": "comment",
+            "key": "message",
             "value": e.target.value
         }));
     }
 
     const onClick = () =>{
-        dispatch(writeChat({
-            content: comment,
+        dispatch(writeMessage({
+            content: message,
             token: user.accessToken,
             channel_id: channelId,
         }));
-        dispatch(initialize());        
+        dispatch(initialize());
     }
 
     const onClickExit = () => {
-        dispatch(exitRoom({
+        dispatch(exit({
             token: user.accessToken,
             channel_id: channelId
         }));
     }
 
     const onMessageReceived = (msg) => {
-        console.log("New Message Received!!", msg);
-        dispatch(getChat(msg));
+        dispatch(updateChat(msg));
     }
 
     const customHeaders = {
@@ -70,7 +70,7 @@ const ChatRoomContainer = () => {
                 onMessage={(msg) => onMessageReceived(msg)}
                 debug={true}
             />
-            <ChatList messages={messages} onClick={onClick} onChange={onChange} comment={comment}/>
+            <ChatList messages={messages} onClick={onClick} onChange={onChange} comment={message}/>
             <Button onClick={onClickExit}>채팅방 나가기</Button>
         </div>
     );

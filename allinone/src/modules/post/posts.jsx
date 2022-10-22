@@ -1,6 +1,6 @@
 import { createAction, handleActions } from "redux-actions";
-import createRequestSaga, { createRequestActionTypes } from "../lib/createRequestSaga";
-import * as postAPI from '../lib/api/posts';
+import createRequestSaga, { createRequestActionTypes } from "../../lib/createRequestSaga";
+import * as postAPI from '../../lib/api/posts';
 import { takeLatest } from 'redux-saga/effects';
 
 
@@ -54,7 +54,8 @@ const posts = handleActions(
         }),
         [LIST_POSTS_SUCCESS]: (state, {payload: posts}) => ({
             ...state,
-            posts,
+            // posts data 하나 더 쌓여서 옴
+            posts: posts.data,
             
         }),
         [LIST_POSTS_FAILURE]: (state, {payload: error}) => ({

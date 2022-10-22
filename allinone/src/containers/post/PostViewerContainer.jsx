@@ -12,8 +12,8 @@ import {
 import PostActionButtons from '../../components/posts/PostActionButtons';
 import PostViewer from '../../components/posts/PostViewer';
 import { removeComment, removePost } from '../../lib/api/posts';
-import { readPost, unloadPost } from '../../modules/post';
-import { setOriginalPost } from '../../modules/write';
+import { readPost, unloadPost } from '../../modules/post/post';
+import { setOriginalPost } from '../../modules/post/write';
 
 const PostViewerContainer = () => {
   // 처음 마운트될 때 포스트 읽기 API 요청
@@ -59,7 +59,7 @@ const PostViewerContainer = () => {
 
   const onEditPost = () => {
     dispatch(setOriginalPost(post));
-    navigate('/write');
+    navigate('/write.jsx');
   };
 
   const ownPost = (user && user.name) === (post && post.b_writer);

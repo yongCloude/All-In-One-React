@@ -4,22 +4,21 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from '../../../node_modules/react-redux/es/exports';
 import ChatRoom from '../../components/chat/ChatRoom';
-import { listMyRooms } from '../../modules/chat';
+import { getMyRooms } from '../../modules/chat/room';
 
 
-const MyChatListContainer = () => {
+
+const MyChatRoomListContainer = () => {
 
     const dispatch = useDispatch();
-
-    const { rooms, error, user } = useSelector(({ chat, wChat, auth }) => ({
-        rooms: chat.rooms,
-        error: chat.error,
+    const { rooms, error, user } = useSelector(({ room, auth }) => ({
+        rooms: room.myRooms,
+        error: room.error,
         user: auth.user
       }));
 
     useEffect(() => {
-        console.log(user.accessToken);
-        dispatch(listMyRooms({token: user.accessToken}));
+        dispatch(getMyRooms({token: user.accessToken}));
     },[dispatch, user.accessToken])
 
     return (
@@ -29,4 +28,4 @@ const MyChatListContainer = () => {
     );
 };
 
-export default MyChatListContainer;
+export default MyChatRoomListContainer;

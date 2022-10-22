@@ -6,7 +6,7 @@ import {
 } from '../../../node_modules/react-redux/es/exports';
 
 import PostList from '../../components/posts/PostList';
-import { changeField, initialize, listPosts } from '../../modules/posts';
+import { changeField, initialize, listPosts } from '../../modules/post/posts';
 import Pagination from '../../components/posts/Pagination';
 import SearchBar from '../../common/SearchBar';
 import Select from 'react-select';
