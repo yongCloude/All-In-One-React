@@ -1,7 +1,7 @@
 import { createAction, handleActions } from 'redux-actions';
 import produce from 'immer';
-import createRequestSaga, { createRequestActionTypes, createRequestSagaReturnSuccess } from '../lib/createRequestSaga';
-import * as authAPI from '../lib/api/auth';
+import createRequestSaga, { createRequestActionTypes, createRequestSagaReturnSuccess } from '../../lib/createRequestSaga';
+import * as authAPI from '../../lib/api/auth';
 import { takeLatest } from 'redux-saga/effects';
 
 const CHANGE_FILED = 'auth/CHANGE_FILED';
@@ -18,6 +18,18 @@ const [
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
 ] = createRequestActionTypes('auth/LOGIN');
+
+const [
+  LIST_FRIENDS,
+  LIST_FRIENDS_SUCCESS,
+  LIST_FRIENDS_FAILURE,
+] = createRequestActionTypes('auth/LIST_FRIENDS');
+
+const [
+  DELETE_FRIENDS,
+  DELETE_FRIENDS_SUCCESS,
+  DELETE_FRIENDS_FAILURE,
+] = createRequestActionTypes('auth/DELETE_FRIENDS')
 
 const TEMP_SET_USER = 'auth/TEMP_SET_USER';
 const LOGOUT = 'auth/LOGOUT';
@@ -77,14 +89,22 @@ export const loginSuccess = createAction(
   }),
 );
 
+export const getFriends = createAction(LIST_FRIENDS, token => token);
+
+export const deleteFriend = createAction(DELETE_FRIENDS, ({ token, friend_id }) => ({ token, friend_id }));
+
 // 사가 생성
 const registerSaga = createRequestSaga(REGISTER, authAPI.register);
 const loginSaga = createRequestSaga(LOGIN, authAPI.login);
+const friendsSaga = createRequestSaga(LIST_FRIENDS, authAPI.getFriends);
+const deleteFriendSaga = createRequestSaga(DELETE_FRIENDS, authAPI.deleteFriend);
 
 export function* authSaga() {
   yield takeLatest(REGISTER, registerSaga);
   yield takeLatest(LOGIN, loginSaga);
   yield takeLatest(LOGOUT, logoutSaga);
+  yield takeLatest(LIST_FRIENDS, friendsSaga);
+  yield takeLatest(DELETE_FRIENDS, deleteFriendSaga);
 }
 
 const initialState = {
@@ -101,6 +121,7 @@ const initialState = {
     password: '',
   },
   user: null,
+  friends: null,
 };
 
 const auth = handleActions(
@@ -143,6 +164,31 @@ const auth = handleActions(
       ...state,
       user: null,
     }),
+
+    // 친구목록 불러오기
+    [LIST_FRIENDS_SUCCESS]: (state, { payload: friends }) => ({
+      ...state,
+      friends,
+    }),
+
+    // 친구목록 불러오기 실패
+    [LIST_FRIENDS_FAILURE]: (state, { payload: error }) => ({
+      ...state,
+      authError: error,
+    }),
+
+    // 친구 삭제
+    [DELETE_FRIENDS_SUCCESS]: (state, { payload: result }) => ({
+      ...state,
+      result,
+    }),
+
+    // 친구 삭제 실패
+    [DELETE_FRIENDS_FAILURE]: (state, { payload: error }) => ({
+      ...state,
+      authError: error,
+    }),
+
   },
 
   initialState,
