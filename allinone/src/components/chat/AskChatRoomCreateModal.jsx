@@ -1,5 +1,5 @@
 import React from 'react';
-import InputModal from '../../common/InputModal';
+import InputModal from '../../common/modal/InputModal';
 
 
 const AskChatRoomCreateModal = ({visible, onConfirm, onCancel, onChange}) => {

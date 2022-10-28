@@ -1,8 +1,8 @@
 import client from './client';
 
 
-export const readChat = ({token, channel_id}) => {
-    console.log('channel_id: ' + channel_id);
+/** 채팅 내역 불러오기 **/
+export const loadMessage = ({token, channel_id}) => {
     return client.get(
        `/v2/chat/${channel_id}`,
         {
@@ -13,8 +13,8 @@ export const readChat = ({token, channel_id}) => {
     );
 };
 
-export const writeChat = ({token, content, channel_id}) => {
-    console.log('writeChat:',token,content);
+/** 채팅 보내기 **/
+export const writeMessage = ({token, content, channel_id}) => {
     client.post(
         `/v2/chat/${channel_id}`,
         {content: content},
@@ -26,6 +26,7 @@ export const writeChat = ({token, content, channel_id}) => {
     )
 }
 
+/** 채팅방 만들기 **/
 export const createRoom = ({token, title}) => {
     client.post(
         `/v2/chat`,
@@ -38,6 +39,7 @@ export const createRoom = ({token, title}) => {
     )
 }
 
+/** 채팅방 리스트 불러오기 **/
 export const getRooms = ({title}) => {
     return client.get(
         `v2/chat`,
@@ -49,6 +51,7 @@ export const getRooms = ({title}) => {
     )
 }
 
+/** 내가 만든 채팅방 불러오기 **/
 export const getMyRooms = ({token}) => {
     return client.get(
         `v2/chat/my`,
@@ -60,6 +63,7 @@ export const getMyRooms = ({token}) => {
     )
 }
 
+/** 채팅방 나가기 **/
 export const exitRoom = ({token, channel_id}) => {
     client.delete(
         `v2/chat/${channel_id}`,
@@ -69,4 +73,31 @@ export const exitRoom = ({token, channel_id}) => {
             }
         }
     )
+}
+
+/** 채팅방 유저 리스트 불러오기 **/
+export const getRoomParticipants = ({token, channel_id}) => {
+  console.log('api: ' + channel_id);
+  return client.get(
+    `v2/chat/${channel_id}/users`,
+    {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    }
+  )
+}
+
+/** 초대하기 **/
+export const invite = ({token, channel_id, user_email, user_name}) => {
+  console.log(token);
+  client.post(
+    `/v2/chat/${channel_id}/invite`,
+    { user_email, user_name },
+    {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    },
+  );
 }

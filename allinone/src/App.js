@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import PostListPage from './pages/Post/PostListPage';
 import PostViewPage from './pages/Post/PostViewPage';
 import PostWritePage from './pages/Post/PostWritePage';
+import MyPage from './pages/auth/MyPage';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path='/posts' element={<PostListPage/>}/>
         <Route path='/chat' element={<ChatListPage/>}/>
         <Route path='/mychat' element={<MyChatListPage/>}/>
+        <Route path='/mypage' element={<MyPage/>}/>
         <Route path='/chat/:channelId' element={<ChatRoomPage/>}/>
         <Route path='/post/:postId' element={<PostViewPage/>}/>
       </Routes>

@@ -19,6 +19,7 @@ const Header = ({user, onLogout}) => {
                 <Button to="/posts">게시판</Button>
                 <Button to="/chat">채팅</Button>
                 {user && <Button to="/mychat">나의 채팅방</Button>}
+                {user && <Button to="/mypage">마이 페이지</Button>}
                 
             </div>
             {user ? (

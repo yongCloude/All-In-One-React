@@ -1,0 +1,15 @@
+
+
+.FriendList {
+  .ItemWrapper {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+    .Item{
+      margin-right: 1rem;
+    }
+
+
+  }
+
+}

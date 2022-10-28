@@ -31,6 +31,12 @@ const [
   DELETE_FRIENDS_FAILURE,
 ] = createRequestActionTypes('auth/DELETE_FRIENDS')
 
+const [
+  ADD_FRIEND,
+  ADD_FRIEND_SUCCESS,
+  ADD_FRIEND_FAILURE,
+] = createRequestActionTypes('auth/ADD_FRIEND');
+
 const TEMP_SET_USER = 'auth/TEMP_SET_USER';
 const LOGOUT = 'auth/LOGOUT';
 
@@ -92,12 +98,19 @@ export const loginSuccess = createAction(
 export const getFriends = createAction(LIST_FRIENDS, token => token);
 
 export const deleteFriend = createAction(DELETE_FRIENDS, ({ token, friend_id }) => ({ token, friend_id }));
+export const addFriend = createAction(ADD_FRIEND, ({ token, user_name, user_email }) => ({
+  token,
+  user_name,
+  user_email,
+}));
 
 // 사가 생성
 const registerSaga = createRequestSaga(REGISTER, authAPI.register);
 const loginSaga = createRequestSaga(LOGIN, authAPI.login);
 const friendsSaga = createRequestSaga(LIST_FRIENDS, authAPI.getFriends);
 const deleteFriendSaga = createRequestSaga(DELETE_FRIENDS, authAPI.deleteFriend);
+const addFriendSaga = createRequestSaga(ADD_FRIEND, authAPI.addFriend);
+
 
 export function* authSaga() {
   yield takeLatest(REGISTER, registerSaga);
@@ -105,7 +118,9 @@ export function* authSaga() {
   yield takeLatest(LOGOUT, logoutSaga);
   yield takeLatest(LIST_FRIENDS, friendsSaga);
   yield takeLatest(DELETE_FRIENDS, deleteFriendSaga);
+  yield takeLatest(ADD_FRIEND, addFriendSaga);
 }
+
 
 const initialState = {
   register: {
@@ -138,7 +153,7 @@ const auth = handleActions(
     [REGISTER_SUCCESS]: (state, ) => ({
       ...state,
       authError: null,
-      
+
     }),
     // 회원가입 실패
     [REGISTER_FAILURE]: (state, { payload: error }) => ({
@@ -189,6 +204,16 @@ const auth = handleActions(
       authError: error,
     }),
 
+    // 친구 추가
+    [ADD_FRIEND_SUCCESS]: (state, { payload: friend }) => ({
+      ...state,
+      friend,
+    }),
+    // 친구 삭제 실패
+    [ADD_FRIEND_FAILURE]: (state, { payload: error }) => ({
+      ...state,
+      authError: error,
+    }),
   },
 
   initialState,

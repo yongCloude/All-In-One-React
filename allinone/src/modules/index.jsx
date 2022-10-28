@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { all } from 'redux-saga/effects';
-import auth, { authSaga } from './auth';
+import auth, { authSaga } from './auth/auth';
 import loading from './loading';
 import write, { writeSaga } from './post/write';
 import post, { postSaga } from './post/post';

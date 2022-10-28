@@ -1,0 +1,24 @@
+
+
+.ChatRoomContainer {
+  display: flex;
+  flex-direction: row;
+  flex-flow: column;
+
+  align-items: center;
+
+  .Button {
+    display: flex;
+
+  }
+  .FriendList {
+    margin-right: 100px;
+  }
+
+  .ShowChatRoomParticipantsActionButton{
+    display: flex;
+    justify-self: flex-start;
+
+
+  }
+}

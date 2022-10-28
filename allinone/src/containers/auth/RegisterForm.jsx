@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from '../../../node_modules/react-router-dom/index';
 import AuthForm from '../../components/auth/AuthForm';
-import { changeField, initializeForm, register } from '../../modules/auth';
+import { changeField, initializeForm, register } from '../../modules/auth/auth';
 
 const RegisterForm = () => {
     const dispatch = useDispatch();

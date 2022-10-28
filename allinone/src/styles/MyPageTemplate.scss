@@ -1,0 +1,39 @@
+
+
+.MyPageTemplate {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #e9ecef;
+  z-index: 30;
+
+  .Info {
+
+    hr {
+      opacity: 0.3;
+      margin-bottom: 3rem;
+    }
+
+    #title {
+      display: block;
+      padding-bottom: 2rem;
+      text-align: center;
+      font-weight: bold;
+      font-size: 2.0rem;
+      letter-spacing: 2px;
+    }
+
+    box-shadow: 0 0 8px rgba(0,0,0,0.025);
+    padding: 2rem;
+    width: 960px;
+    background: white;
+    border-radius: 2px;
+  }
+}

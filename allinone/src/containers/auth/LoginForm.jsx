@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from '../../../node_modules/react-router-dom/index';
 import AuthForm from '../../components/auth/AuthForm';
-import { changeField, initializeForm, login } from '../../modules/auth';
+import { changeField, initializeForm, login } from '../../modules/auth/auth';
 
 const LoginForm = () => {
     

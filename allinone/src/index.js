@@ -13,7 +13,7 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { composeWithDevTools } from '../node_modules/redux-devtools-extension/index';
 import createSagaMiddleware from 'redux-saga';
 
-import { tempSetUser } from './modules/auth';
+import { tempSetUser } from './modules/auth/auth';
 
 
 
