@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
+import React, { forwardRef, useRef, useState } from 'react';
 import '../../styles/ChatList.scss';
 
 
-const ChatList = ({ messages, onClick, onChange, comment }) => {
+const ChatList = forwardRef(({ messages, onClick, onChange, comment, searchMessage, onChangeSearchMessage, onClickSearchButton }, ref) => {
+
+
   return (
     <div className='ChatList'>
-      <header>채팅방</header>
+      <header>
+        <h2>채팅방</h2>
+        <div className='SearchBarWrapper'>
+          <input value={searchMessage} onChange={(e)=>onChangeSearchMessage(e.target.value)}/>
+          <p onClick={onClickSearchButton}>검색</p>
+        </div>
+      </header>
       <div className='Chats'>
         {messages.map((message) => (
-          <div>
-            <ChatItem message={message} key={message.chat_id}/>
+          <div ref={(el) => (ref.current[message.chat_id] = el)} id={message.chat_id}>
+            <ChatItem message={message} key={message.chat_id} />
           </div>
         ))}
       </div>
@@ -19,7 +27,7 @@ const ChatList = ({ messages, onClick, onChange, comment }) => {
       </footer>
     </div>
   );
-};
+});
 
 const ChatItem = ({ message, onClickModal }) => {
 
@@ -29,11 +37,13 @@ const ChatItem = ({ message, onClickModal }) => {
 
   return (
     <div className='ChatItem'>
-      <div id='user_name' onClick={onClickModal}>{message.user_name}</div>
+      <div onClick={onClickModal}>{message.user_name}</div>
       <div className='ItemWrapper'>
-        <div id='item'>
-          {message.content}
-        </div>
+        {
+          message.type == 'image/png' ? (<img src={`data:image/png;base64,${message.content}`} />)
+            : (<div id='item'>{message.content}</div>)
+        }
+
         <span id='time'>{time}시{min}분</span>
       </div>
     </div>

@@ -19,19 +19,31 @@ const [
  */
 const UPDATE_MESSAGE = 'chat/message/UPDATE_MESSAGE';
 
+/**
+ * 메세지 검색하기
+ */
+const [
+  SEARCH_MESSAGE,
+  SEARCH_MESSAGE_SUCCESS,
+  SEARCH_MESSAGE_FAILURE
+] = 'chat/message/SEARCH_MESSAGE';
 
-export const loadChats = createAction(LOAD_MESSAGES, ({ token, channel_id }) => ({ token, channel_id }));
+
+export const loadMessage = createAction(LOAD_MESSAGES, ({ token, channel_id }) => ({ token, channel_id }));
 export const updateChat = createAction(UPDATE_MESSAGE);
-
+export const searchMessage = createAction(SEARCH_MESSAGE, ({ token, channel_id, content }) => ({ token, channel_id, content }));
 
 const loadChatSaga = createRequestSaga(LOAD_MESSAGES, postAPI.loadMessage);
+const searchMessageSaga = createRequestSaga(SEARCH_MESSAGE, postAPI.searchMessage);
 
 export function* messageSaga() {
   yield takeLatest(LOAD_MESSAGES, loadChatSaga);
+  yield takeLatest(SEARCH_MESSAGE, searchMessageSaga);
 }
 
 const initialState = {
   messages: null,
+  searchMessage: null,
   error: null,
 };
 
@@ -47,6 +59,15 @@ const message = handleActions(
       messages: messages.data.records,
     }),
     [LOAD_MESSAGES_FAILURE]: (state, { payload: error }) => ({
+      ...state,
+      error,
+    }),
+
+    [SEARCH_MESSAGE_SUCCESS]: (state, { payload: searchMessage }) => ({
+      ...state,
+      searchMessage: searchMessage.data,
+    }),
+    [SEARCH_MESSAGE_FAILURE]: (state, { payload: error }) => ({
       ...state,
       error,
     }),

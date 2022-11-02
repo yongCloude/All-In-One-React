@@ -26,6 +26,23 @@ export const writeMessage = ({token, content, channel_id}) => {
     )
 }
 
+/** 채팅 내역 검색하기 **/
+export const searchMessage = ({ token, channel_id, content }) => {
+  return client.get(
+
+    `/v2/chat/${channel_id}/find`,
+    {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+      params: {
+        content,
+      },
+    },
+  );
+
+};
+
 /** 채팅방 만들기 **/
 export const createRoom = ({token, title}) => {
     client.post(
