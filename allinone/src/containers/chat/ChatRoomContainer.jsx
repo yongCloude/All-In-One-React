@@ -11,7 +11,7 @@ import { exit, getRoomParticipants, invite } from '../../modules/chat/room';
 import ShowChatRoomParticipantsActionButton from '../../components/chat/ShowChatRoomParticipantsActionButton';
 import { addFriend, getFriends } from '../../modules/auth/auth';
 
-import '../../styles/ChatRoomContainer.scss';
+import '../../styles/chat/ChatRoomContainer.scss';
 import FriendList from '../../components/chat/FriendList';
 import { searchMessage } from '../../lib/api/chat';
 

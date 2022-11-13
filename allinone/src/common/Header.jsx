@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from './Button';
-import '../styles/Header.scss';
+import '../styles/common/Header.scss';
 import Responsive from './Responsive';
 import { useNavigate } from '../../node_modules/react-router-dom/index';
 

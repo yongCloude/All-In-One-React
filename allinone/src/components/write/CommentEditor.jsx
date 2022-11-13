@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/CommentEditor.scss';
+import '../../styles/post/CommentEditor.scss';
 const CommentEditor = ({ comment, onChangeField }) => {
   const onChange = (e) => {
     onChangeField({ key: 'comment', value: e.target.value });

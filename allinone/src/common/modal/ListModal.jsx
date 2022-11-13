@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../Button';
-import '../../styles/ListModal.scss';
+import '../../styles/modal/ListModal.scss';
 const ListModal = ({ visible, title, onCancel, participants, onConfirm }) => {
 
   if (!visible) return null;

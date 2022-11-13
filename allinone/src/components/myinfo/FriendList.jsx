@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/FriendList.scss';
+import '../../styles/mypage/FriendList.scss';
 const FriendList = ({friends}) => {
 
   return (

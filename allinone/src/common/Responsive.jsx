@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/Responsive.scss';
+import '../styles/common/Responsive.scss';
 
 const Responsive = ({ children, ...rest }) => {
     return (

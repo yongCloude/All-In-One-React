@@ -1,5 +1,5 @@
 import React, { forwardRef, useRef, useState } from 'react';
-import '../../styles/ChatList.scss';
+import '../../styles/chat/ChatList.scss';
 
 
 const ChatList = forwardRef(({ messages, onClick, onChange, comment, searchMessage, onChangeSearchMessage, onClickSearchButton }, ref) => {

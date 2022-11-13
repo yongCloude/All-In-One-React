@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/CommentList.scss';
+import '../../styles/post/CommentList.scss';
 import CommentActionButtons from '../posts/CommentActionButtons';
 const CommentList = ({username, commentList, onRemoveComment}) => {
     return (

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../styles/Button.scss';
+import '../styles/common/Button.scss';
 import classNames from 'classnames';
 import { useNavigate } from '../../node_modules/react-router-dom/index';
 import { RangeStatic } from 'quill';

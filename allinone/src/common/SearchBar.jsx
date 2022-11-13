@@ -1,7 +1,7 @@
 
 
 import React from 'react';
-import '../styles/SearchBar.scss';
+import '../styles/common/SearchBar.scss';
 import Button from './Button';
 const SearchBar = ({option, onChange, onClick}) => {
     return (

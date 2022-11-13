@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Button from '../Button';
-import '../../styles/AskAddFriendModal.scss';
+import '../../styles/modal/AskAddFriendModal.scss';
 const AskAddFriendModal = ({
                           visible,
                           title,

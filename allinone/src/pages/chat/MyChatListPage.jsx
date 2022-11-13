@@ -4,7 +4,7 @@ import React from 'react';
 import Responsive from '../../common/Responsive';
 import HeaderContainer from '../../containers/common/HeaderContainer';
 import MyChatRoomListContainer from '../../containers/chat/MyChatRoomListContainer';
-import '../../styles/MyChatListPage.scss'
+import '../../styles/chat/MyChatListPage.scss'
 
 const MyChatListPage = () => {
     return (

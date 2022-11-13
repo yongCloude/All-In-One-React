@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/MyPageTemplate.scss';
+import '../../styles/mypage/MyPageTemplate.scss';
 
 const MyPageTemplate = ({children}) => {
 

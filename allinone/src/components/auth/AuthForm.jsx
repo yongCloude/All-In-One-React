@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from '../../../node_modules/react-router-dom/index';
 import Button from '../../common/Button';
-import '../../styles/AuthForm.scss';
+import '../../styles/auth/AuthForm.scss';
 
 /** 회원가입 또는 로그인 폼을 보여준다. */
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../../common/Button';
-import '../../styles/CommentWriteActionButton.scss';
+import '../../styles/post/CommentWriteActionButton.scss';
 
 const CommentWriteActionButton = ({onPublish}) => {
     return (

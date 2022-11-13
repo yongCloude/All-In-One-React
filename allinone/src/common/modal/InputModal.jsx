@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../Button';
-import '../../styles/InputModal.scss';
+import '../../styles/modal/InputModal.scss';
 
 const InputModal = ({
                       visible,

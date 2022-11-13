@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useState } from 'react';
-import '../../styles/PostActionButtons.scss'
+import '../../styles/post/PostActionButtons.scss'
 import AskRemoveModal from '../post/AskRemoveModal';
 
 const PostActionButtons = ({ onEdit, onRemove }) => {

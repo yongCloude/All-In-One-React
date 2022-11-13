@@ -4,7 +4,7 @@ import { Link } from '../../../node_modules/react-router-dom/index';
 import Button from '../../common/Button';
 import Responsive from '../../common/Responsive';
 import SubInfo from '../../common/SubInfo';
-import '../../styles/PostList.scss';
+import '../../styles/post/PostList.scss';
 import sanitize from 'sanitize-html';
 
 

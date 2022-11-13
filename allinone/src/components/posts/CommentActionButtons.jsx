@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import AskCommentRemoveModal from '../../components/post/AskCommentRemoveModal';
-import '../../styles/CommentActionButtons.scss';
+import '../../styles/post/CommentActionButtons.scss';
 const CommentActionButtons = ({ id, onEdit, onRemove }) => {
 
     const [modal, setModal] = useState(false);

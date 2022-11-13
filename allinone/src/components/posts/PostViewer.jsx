@@ -1,7 +1,7 @@
 import React from 'react';
 import Responsive from '../../common/Responsive';
 import SubInfo from '../../common/SubInfo';
-import '../../styles/PostViewer.scss';
+import '../../styles/post/PostViewer.scss';
 import CommentList from '../post/CommentList';
 
 const PostViewer = ({

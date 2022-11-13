@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/SubInfo.scss';
+import '../styles/common/SubInfo.scss';
 
 
 const SubInfo = ({username, publishDate, likes, views}) => {
