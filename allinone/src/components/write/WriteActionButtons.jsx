@@ -1,12 +1,13 @@
 import React from 'react';
-import Button from '../../common/Button';
+
 import '../../styles/post/WriteActionButtons.scss';
+import { Button } from 'react-bootstrap';
 
 const WriteActionButtons = ({ onCancel, onPublish, isEdit }) => {
     return (
         <div className='WriteActionButtons'>
-            <Button cyan={true} onClick={onPublish}>포스트 {isEdit ? '수정' : '등록'}</Button>
-            <Button onClick={onCancel}>취소</Button>
+          <Button variant='info' onClick={onPublish}>포스트 {isEdit ? '수정' : '등록'}</Button>
+          <Button variant='dark' onClick={onCancel}>취소</Button>
         </div>
     );
 };

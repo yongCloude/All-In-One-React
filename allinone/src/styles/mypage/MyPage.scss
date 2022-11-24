@@ -1,0 +1,30 @@
+.mypage-container {
+  margin-top: 3rem;
+
+  height: 600px;
+
+
+  .vertical-line {
+    height: 600px;
+    border: 1px solid #C4C4C4 ;
+    opacity: 0.4;
+  }
+
+  .mypage-sidemenu-container{
+    height: inherit;
+  }
+
+  .mypage-menu-view-container{
+
+    background: #EDF6E5;
+  }
+
+  .MyPageSideMenu {
+    height: 600px;
+    background: #FFFCF1;
+
+    a {
+      color: black;
+    }
+  }
+}

@@ -4,16 +4,8 @@ import '../../styles/chat/ChatList.scss';
 
 const ChatList = forwardRef(({ messages, onClick, onChange, comment, searchMessage, onChangeSearchMessage, onClickSearchButton }, ref) => {
 
-
   return (
     <div className='ChatList'>
-      <header>
-        <h2>채팅방</h2>
-        <div className='SearchBarWrapper'>
-          <input value={searchMessage} onChange={(e)=>onChangeSearchMessage(e.target.value)}/>
-          <p onClick={onClickSearchButton}>검색</p>
-        </div>
-      </header>
       <div className='Chats'>
         {messages.map((message) => (
           <div ref={(el) => (ref.current[message.chat_id] = el)} id={message.chat_id}>
@@ -21,10 +13,6 @@ const ChatList = forwardRef(({ messages, onClick, onChange, comment, searchMessa
           </div>
         ))}
       </div>
-      <footer>
-        <input type='text' value={comment} onChange={onChange} />
-        <button onClick={onClick}>입력</button>
-      </footer>
     </div>
   );
 });

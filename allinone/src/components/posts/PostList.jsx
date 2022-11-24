@@ -1,11 +1,11 @@
 import React from 'react';
-import { useEffect } from 'react';
 import { Link } from '../../../node_modules/react-router-dom/index';
-import Button from '../../common/Button';
+
 import Responsive from '../../common/Responsive';
 import SubInfo from '../../common/SubInfo';
 import '../../styles/post/PostList.scss';
 import sanitize from 'sanitize-html';
+import { Button } from 'react-bootstrap';
 
 
 const removeHtmlAndShorten = content => {
@@ -28,7 +28,7 @@ const PostList = ({posts, loading, error, showWriteButton}) => {
       <div className="PostList">
         <div className="WritePostButtonWrapper">
           {showWriteButton && (
-            <Button cyan={true} to="/write">새 글 작성하기</Button>
+            <Button variant='info' href='/write'>새 글 작성하기</Button>
           )}
         </div>
         <div>

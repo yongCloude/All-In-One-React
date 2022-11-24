@@ -1,30 +1,43 @@
 import React from 'react';
 import '../../styles/mypage/FriendList.scss';
-const FriendList = ({friends}) => {
+import ListGroup from 'react-bootstrap/ListGroup';
+import { Table } from 'react-bootstrap';
+
+const FriendList = ({ friends }) => {
 
   return (
-    <div className='FriendList'>
+    <div className='p-3 mt-3'>
       {friends && (
         <>
-          {friends.map(friend => (
-              <Item friend_id={friend.friend_id} user_email={friend.user_email} user_name={friend.user_name}/>
-            )
-          )}
+          <h4>친구목록</h4>
+          <hr />
+          <Table striped>
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>이름</th>
+              <th>이메일</th>
+            </tr>
+            </thead>
+            <tbody>
+            {friends.map(friend => (
+                <tr>
+                  <td>{friend.friend_id}</td>
+                  <td>{friend.user_name}</td>
+                  <td>{friend.user_email}</td>
+                </tr>
+              ),
+            )}
+            </tbody>
+          </Table>
         </>
+
       )}
     </div>
   );
 };
 
-const Item = ({ friend_id, user_email, user_name }) => {
-
-  return(
-    <div className='Item'>
-      {friend_id}
-      {user_email}
-      {user_name}
-    </div>
-  )
-};
-
 export default FriendList;
+
+
+

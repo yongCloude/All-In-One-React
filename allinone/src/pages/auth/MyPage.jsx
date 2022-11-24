@@ -1,18 +1,17 @@
 import React from 'react';
 import HeaderContainer from '../../containers/common/HeaderContainer';
+import '../../styles/mypage/MyPage.scss';
+
 import MyPageContainer from '../../containers/myinfo/MyPageContainer';
-import MyPageTemplate from './MyPageTemplate';
 
-const MyPage = () => {
+function MyPage() {
   return (
-    <div className="MyPage">
+    <>
       <HeaderContainer/>
-      <MyPageTemplate>
-        <MyPageContainer/>
-      </MyPageTemplate>
-    </div>
-
+      <MyPageContainer/>
+    </>
   );
-};
+}
 
 export default MyPage;
+

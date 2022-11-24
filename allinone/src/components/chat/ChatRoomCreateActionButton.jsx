@@ -1,35 +1,25 @@
 import React, { useState } from 'react';
-import Button from '../../common/Button';
 import AskChatRoomCreateModal from './AskChatRoomCreateModal';
 
-
 const ChatRoomCreateActionButton = ({onChange, createRoom}) => {
-    const [modal, setModal] = useState(false);
+    const [show, setShow] = useState(false);
 
-    const onCancel = () => {
-        setModal(false);
-    }
-    
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     const onConfirm = () => {
-        setModal(false);
+        setShow(false);
         createRoom();
     }
-
-    const onCreateClick = () => {
-        setModal(true);
-        
-    }
-    
-    
     
     return (
         <div className='ChatRoomCreateActionButton'>
-            <Button onClick={onCreateClick} cyan={true}>채팅방 개설하기</Button>
             <AskChatRoomCreateModal
                 onChange={onChange}
-                visible={modal}
+                show={show}
+                handleShow={handleShow}
+                handleClose={handleClose}
                 onConfirm={onConfirm}
-                onCancel={onCancel}
                 />
         </div>
     );
