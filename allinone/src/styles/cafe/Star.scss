@@ -1,0 +1,28 @@
+
+.Stars {
+  display: inline;
+  margin-left: 3px;
+
+  & svg {
+    color: gray;
+    cursor: pointer;
+  }
+
+
+
+  .Rating {
+    :hover svg {
+      color: red;
+    }
+
+    & svg:hover ~ svg {
+      color: gray;
+    }
+  }
+
+
+
+  .red {
+    color: red;
+  }
+}

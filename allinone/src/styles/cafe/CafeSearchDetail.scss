@@ -1,0 +1,136 @@
+
+.CafeSearchDetail {
+  background: #F7EFEF;
+  height: inherit;
+  overflow-y: scroll;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  header {
+    width: 90%;
+    padding-top: 2rem;
+
+    .InfoAndButtons {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+
+      #info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h3 {
+          font-weight: bold;
+        }
+
+        p {
+          font-weight: bold;
+        }
+      }
+
+      #buttons {
+        width: 200px;
+        height: 40px;
+        display: flex;
+        justify-content: space-between;
+
+        #button {
+          width: 80px;
+
+          border: 2px solid black;
+          border-radius: 24px;
+
+          background: #D9D7F1;
+          color: black;
+          font-size: 1rem;
+          font-weight: bold;
+        }
+      }
+
+    }
+
+    #category {
+      display: flex;
+      justify-content: center;
+      color: #91091E;
+
+      h2 {
+        display: inline;
+      }
+
+      h2 + h2 {
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  .Review {
+
+    margin-top: 1rem;
+    background: #ffffff;
+
+    width: 90%;
+    height: fit-content;
+
+    border: 2px solid black;
+
+    .Box {
+      padding: 1rem;
+      width: 90%;
+      height: fit-content;
+      margin: 1rem auto auto;
+
+      border: 2px solid #D6D6D6;
+
+      #category-list {
+        width: 100%;
+        height: fit-content;
+        word-wrap: break-word;
+
+        span {
+          margin: 1.5rem;
+        }
+      }
+      #category-select-button {
+        background: none;
+        color: black;
+        border: none;
+      }
+
+      .ReviewList {
+        p {
+          color: red;
+        }
+
+        .ReviewItem {
+          margin-top: 1rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .review-content-wrapper {
+            width: 60%;
+            #comment {
+              font-size: 12px;
+            }
+
+          }
+
+          .action-buttons-wrapper {
+            #button {
+              background: none;
+              border: none;
+              opacity: 0.5;
+              color: black;
+            }
+
+          }
+        }
+      }
+    }
+  }
+}

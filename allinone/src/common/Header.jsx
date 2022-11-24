@@ -8,11 +8,11 @@ function Header({ user, onLogout }) {
   return (
     <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
       <Container>
-        <Navbar.Brand href='#home'>AllInOne</Navbar.Brand>
+        <Navbar.Brand href='/'>AllInOne</Navbar.Brand>
         <Navbar.Toggle aria-controls='responsive-navbar-nav' />
         <Navbar.Collapse id='responsive-navbar-nav'>
           <Nav className='me-auto'>
-            <Nav.Link href='cafe-map'>카페 찾기</Nav.Link>
+            <Nav.Link href='/cafe-map'>자기야 카페갈래?</Nav.Link>
             <Nav.Link href='/posts'>게시판</Nav.Link>
             <NavDropdown title='채팅' id='collasible-nav-dropdown'>
               <NavDropdown.Item href='/chat'>모든 채팅방</NavDropdown.Item>
@@ -20,7 +20,7 @@ function Header({ user, onLogout }) {
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link href='/mypage'>마이 페이지</Nav.Link>
+            {user && (<Nav.Link href='/mypage'>마이 페이지</Nav.Link>)}
             {user == null ?
               (<Nav.Link eventKey={2} href='/login'>로그인</Nav.Link>) :
               (<Nav.Link eventKey={2} onClick={onLogout}>로그아웃</Nav.Link>)

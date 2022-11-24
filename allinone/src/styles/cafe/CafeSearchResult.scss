@@ -1,0 +1,50 @@
+
+
+.CafeSearchResultItem {
+
+
+  background: #FFE4F4;
+  border-radius: 18px;
+  padding: 1rem;
+
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+
+  .Info {
+    width: 70%;
+
+    #cafe-name {
+      display: block;
+      height: fit-content;
+      font-weight: bold;
+    }
+
+    .SubInfo {
+      display: flex;
+      flex-direction: row;
+      #rating {
+        color: red;
+      }
+
+      #category {
+        font-weight: bold;
+
+        p {
+          width: 100px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+
+  #detail {
+    display: flex;
+    align-items: center;
+    opacity: 0.5;
+    font-size: 14px;
+  }
+
+}
