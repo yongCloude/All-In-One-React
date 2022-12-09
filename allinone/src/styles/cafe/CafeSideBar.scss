@@ -1,0 +1,104 @@
+
+
+.CafeSideBar {
+  position: absolute;
+  background: #F1EAD6;
+  width: 380px;
+  height: 100vh;
+
+
+  z-index: 3;
+
+  form {
+    width: 200px;
+    margin: 2rem auto 2rem;
+
+    .CafeSearchInput {
+      opacity: 0.6;
+      text-align: center;
+      background: none;
+      border: none;
+      border-bottom: 1px solid black;
+    }
+  }
+
+  .SelectorWrapper {
+    margin: auto;
+    width: 300px;
+    height: 80vh;
+    text-align: center;
+
+    background: #CDC2DF;
+    border-radius: 24px;
+
+
+    p {
+      width: 220px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+
+      margin: 2rem auto auto;
+      border-radius: 24px;
+      background: #F2E9FF;
+    }
+
+    #selector {
+      margin: auto;
+      width: 220px;
+    }
+  }
+
+  .CafeListWrapper {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 100px);
+    overflow-y: scroll;
+
+
+    .CafeListItem {
+      width: inherit;
+      height: 200px;
+      background: #FFE4F4;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+
+      #cafe-info {
+        width: inherit;
+        height: inherit;
+
+        padding: 2rem;
+        #sub {
+          font-size: 0.8rem;
+
+          #rate {
+            color: red;
+            font-weight: bold;
+          }
+        }
+      }
+
+      #show-detail {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 100px;
+        font-size: 0.8rem;
+        height: inherit;
+        padding: 1rem;
+        font-weight: lighter;
+
+        &:hover{
+          cursor: pointer;
+        }
+      }
+    }
+
+  }
+}

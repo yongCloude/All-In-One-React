@@ -13,6 +13,9 @@
 
   .Info {
     width: 70%;
+    height: 100%;
+
+
 
     #cafe-name {
       display: block;
@@ -21,21 +24,22 @@
     }
 
     .SubInfo {
+      width: 250px;
+      height: 30px;
       display: flex;
       flex-direction: row;
+
       #rating {
         color: red;
       }
 
       #category {
         font-weight: bold;
+        width: 150px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
 
-        p {
-          width: 100px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
       }
     }
   }

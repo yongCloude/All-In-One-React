@@ -1,0 +1,35 @@
+
+
+.CafeReview {
+  width: 100%;
+  min-width: 630px;
+  height: 200px;
+
+  .CategorySelectHeader {
+    width: inherit;
+    min-width: inherit;
+    height: inherit;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+
+    #category_item {
+      font-size: 1.4rem;
+      width: fit-content;
+      height: fit-content;
+      border: 1px solid black;
+
+      border-radius: 12px;
+
+      & {
+        margin-right: 1rem;
+      }
+    }
+
+
+
+  }
+}
