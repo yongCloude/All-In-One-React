@@ -9,17 +9,23 @@ import '../../styles/mypage/MyPage.scss';
 import MyPageSideMenu from '../../components/myinfo/MyPageSideMenu';
 import { Route, Routes } from 'react-router-dom';
 import MyInfo from '../../components/myinfo/MyInfo';
+import { loadScrap } from '../../modules/cafe/detail';
+import CafeReview from '../../components/myinfo/CafeReview';
+import { loadCategory } from '../../modules/cafe/search';
 
 const MyPageContainer = () => {
 
   const dispatch = useDispatch();
-  const { user, friends } = useSelector(({ auth }) => ({
+  const { user, friends, categories } = useSelector(({ auth, cafeSearch }) => ({
     user: auth.user,
     friends: auth.friends,
+    categories: cafeSearch.categories,
   }));
 
   useEffect(() => {
     dispatch(getFriends({ token: user.accessToken }));
+    dispatch(loadScrap({ token: user.accessToken }));
+    dispatch(loadCategory());
   }, [dispatch, user]);
 
   if (!user) return <div>오류</div>;
@@ -27,17 +33,17 @@ const MyPageContainer = () => {
   return (
     <Container className='mypage-container'>
       <Row>
-        <Col sm={3} className='mypage-sidemenu-container'>
-          <MyPageSideMenu user_name={user.name} user_email={user.email}/>
+        <Col className='mypage-sidemenu-container'>
+          <MyPageSideMenu user_name={user.name} user_email={user.email} />
         </Col>
         <Col md={'auto'}>
           <div className='vertical-line'></div>
         </Col>
-        <Col sm={8} className='mypage-menu-view-container'>
+        <Col className='mypage-menu-view-container'>
           <Routes>
-            <Route path='myinfo' element={<MyInfo user={user}/>} />
-            <Route path='friends' element={<FriendList friends={friends}/>}/>
-            <Route path='cafe-review' />
+            <Route path='myinfo' element={<MyInfo user={user} />} />
+            <Route path='friends' element={<FriendList friends={friends} />} />
+            <Route path='cafe-review' element={<CafeReview categories={categories}/>} />
           </Routes>
         </Col>
       </Row>

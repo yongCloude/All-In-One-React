@@ -12,7 +12,7 @@ const MyPageSideMenu = ({ user_name, user_email }) => {
       <Nav defaultActiveKey='/mypage' className='flex-column'>
         <Nav.Link href='/mypage/myinfo'><h5>내 정보</h5></Nav.Link>
         <Nav.Link href='/mypage/friends'><h5>친구 정보</h5></Nav.Link>
-        <Nav.Link href='/mypage/cafe-review'><h5>카페 리뷰</h5></Nav.Link>
+        <Nav.Link href='/mypage/cafe-review'><h5>스크랩</h5></Nav.Link>
       </Nav>
     </Stack>
   );
