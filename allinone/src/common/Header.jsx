@@ -12,7 +12,7 @@ function Header({ user, onLogout }) {
         <Navbar.Toggle aria-controls='responsive-navbar-nav' />
         <Navbar.Collapse id='responsive-navbar-nav'>
           <Nav className='me-auto'>
-            <Nav.Link href='/cafe-map'>자기야 카페갈래?</Nav.Link>
+            <Nav.Link href='/cafe'>자기야 카페갈래?</Nav.Link>
             <Nav.Link href='/posts'>게시판</Nav.Link>
             <NavDropdown title='채팅' id='collasible-nav-dropdown'>
               <NavDropdown.Item href='/chat'>모든 채팅방</NavDropdown.Item>
