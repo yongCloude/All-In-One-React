@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../../styles/cafe/Star.scss';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 
-const RatingStar = () => {
+const RatingStar = ({onClick}) => {
 
   // 별점 기본값 설정
   const [clicked, setClicked] = useState([false, false, false, false, false]);
@@ -17,6 +17,7 @@ const RatingStar = () => {
       clickStates[i] = i <= index ? true : false;
     }
     setClicked(clickStates);
+    onClick(index+1);
     console.log(clickStates);
   };
 
@@ -26,6 +27,7 @@ const RatingStar = () => {
         {array.map((el) => (
           <StarBorderIcon
             key={el}
+            value={el}
             onClick={() => handleStarClick(el)}
             className={clicked[el] && 'red'}
             size="30"
