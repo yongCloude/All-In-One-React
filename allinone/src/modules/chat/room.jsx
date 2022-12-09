@@ -1,6 +1,6 @@
 import createRequestSaga, { createRequestActionTypes } from '../../lib/createRequestSaga';
 import { createAction, handleActions } from 'redux-actions';
-import * as postAPI from '../../lib/api/chat';
+import * as chatAPI from '../../lib/api/chat';
 import { takeLatest } from 'redux-saga/effects';
 
 /**
@@ -66,11 +66,11 @@ export const invite = createAction(INVITE, ({token, channel_id, user_email, user
 /**
  *  Saga 생성
  */
-const getRoomsSaga = createRequestSaga(LIST_ROOMS, postAPI.getRooms);
-const getMyRoomSaga = createRequestSaga(LIST_MY_ROOMS, postAPI.getMyRooms);
-const exitRoomSaga = createRequestSaga(EXIT_ROOM, postAPI.exitRoom);
-const getRoomParticipantsSaga = createRequestSaga(LIST_ROOM_PARTICIPANTS, postAPI.getRoomParticipants);
-const inviteSage = createRequestSaga(INVITE, postAPI.invite);
+const getRoomsSaga = createRequestSaga(LIST_ROOMS, chatAPI.getRooms);
+const getMyRoomSaga = createRequestSaga(LIST_MY_ROOMS, chatAPI.getMyRooms);
+const exitRoomSaga = createRequestSaga(EXIT_ROOM, chatAPI.exitRoom);
+const getRoomParticipantsSaga = createRequestSaga(LIST_ROOM_PARTICIPANTS, chatAPI.getRoomParticipants);
+const inviteSage = createRequestSaga(INVITE, chatAPI.invite);
 
 export function* roomSaga() {
   yield takeLatest(LIST_ROOMS, getRoomsSaga);

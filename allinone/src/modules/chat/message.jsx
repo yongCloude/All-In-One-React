@@ -1,4 +1,4 @@
-import * as postAPI from '../../lib/api/chat';
+import * as chatAPI from '../../lib/api/chat';
 import { takeLatest } from 'redux-saga/effects';
 import createRequestSaga, { createRequestActionTypes } from '../../lib/createRequestSaga';
 import { createAction, handleActions } from 'redux-actions';
@@ -33,8 +33,8 @@ export const loadMessage = createAction(LOAD_MESSAGES, ({ token, channel_id }) =
 export const updateChat = createAction(UPDATE_MESSAGE);
 export const searchMessage = createAction(SEARCH_MESSAGE, ({ token, channel_id, content }) => ({ token, channel_id, content }));
 
-const loadChatSaga = createRequestSaga(LOAD_MESSAGES, postAPI.loadMessage);
-const searchMessageSaga = createRequestSaga(SEARCH_MESSAGE, postAPI.searchMessage);
+const loadChatSaga = createRequestSaga(LOAD_MESSAGES, chatAPI.loadMessage);
+const searchMessageSaga = createRequestSaga(SEARCH_MESSAGE, chatAPI.searchMessage);
 
 export function* messageSaga() {
   yield takeLatest(LOAD_MESSAGES, loadChatSaga);

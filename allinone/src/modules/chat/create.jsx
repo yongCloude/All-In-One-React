@@ -1,6 +1,6 @@
 import createRequestSaga, { createRequestActionTypes } from '../../lib/createRequestSaga';
 import { createAction, handleActions } from 'redux-actions';
-import * as postAPI from '../../lib/api/chat';
+import * as chatAPI from '../../lib/api/chat';
 import { takeLatest } from 'redux-saga/effects';
 
 
@@ -29,7 +29,7 @@ export const changeField = createAction(CHANGE_FIELD, ({key, value}) => ({
   value
 }));
 
-const createSaga = createRequestSaga(CREATE_ROOM, postAPI.createRoom);
+const createSaga = createRequestSaga(CREATE_ROOM, chatAPI.createRoom);
 
 const initialState = {
   title: '',
