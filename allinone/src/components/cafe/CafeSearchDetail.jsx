@@ -17,6 +17,7 @@ const CafeSearchDetail = ({
                             onClickDelete,
                             toggleActive,
                             onToggleModal,
+                            onUploadImage,
                           }) => {
 
   const dispatch = useDispatch();
@@ -40,7 +41,6 @@ const CafeSearchDetail = ({
           </div>
           <div id='buttons'>
             <Button id='button' size='sm' onClick={onToggleModal}>스크랩</Button>
-            <Button id='button' size='sm'>평가하기</Button>
           </div>
         </div>
         <div id='category'>
@@ -51,11 +51,24 @@ const CafeSearchDetail = ({
       </header>
       <div className='Review'>
         <Stack gap={1}>
+          <div className='Box'>
+            <div id='photo-title'>
+              <h3>사진</h3>
+              <span>더보기</span>
+            </div>
+            <div className='PhotoWrapper'>
+              {detail.photos.map((photo)=>(
+                <img src={`data:image/png;base64,${photo}`} />
+              ))}
+            </div>
+
+          </div>
           <SelectCategory categories={categories} toggleActive={toggleActive} categoryActive={categoryActive} />
           <WriteReview cafe_id={cafe_id}
                        onChange={onChange}
                        onClickSubmit={onClickSubmit}
                        onClickStar={onClickStar}
+                       onUploadImage={onUploadImage}
           />
           <ReviewList
             cafe_id={cafe_id}
@@ -89,12 +102,17 @@ const SelectCategory = ({ categories, toggleActive, categoryActive }) => {
   );
 };
 
-const WriteReview = ({ cafe_id, onChange, onClickSubmit, onClickStar }) => {
+const WriteReview = ({ cafe_id, onChange, onClickSubmit, onClickStar, onUploadImage }) => {
   return (
     <div className='Box'>
       <div className='Header'>
-        <p>리뷰 작성</p>
-        <RatingStar onClick={onClickStar} />
+        <div>
+          <p>리뷰 작성</p>
+          <RatingStar onClick={onClickStar} />
+        </div>
+        <div className='IncludePhotoWrapper'>
+          <input type="file" accept="image/*" onChange={(e) => onUploadImage(e)}/>
+        </div>
       </div>
       <InputGroup className='mt-2'>
         <Form.Control

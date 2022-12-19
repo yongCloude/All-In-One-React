@@ -6,6 +6,7 @@ import CafeSearchDetail from '../../components/cafe/CafeSearchDetail';
 import { useParams } from 'react-router-dom';
 import { evaluate } from '../../lib/api/cafe';
 import AskConfirmModal from '../../common/modal/AskConfirmModal';
+import { loadCategory } from '../../modules/cafe/search';
 
 const CafeDetailContainer = () => {
 
@@ -50,6 +51,9 @@ const CafeDetailContainer = () => {
 
   useEffect(() => {
     dispatch(loadCafeDetail({ cafe_id }));
+
+    if(categories == null)
+      dispatch(loadCategory());
   }, [dispatch]);
 
   const [request, setRequest] = useState({
@@ -69,6 +73,11 @@ const CafeDetailContainer = () => {
     setRequest(result);
   };
 
+  const [image, setImage] = useState();
+  const onUploadImage = (e) => {
+
+    setImage(e.target.files[0]);
+  };
   const onClickSubmit = (cafe_id) => {
 
     let categories = {};
@@ -90,13 +99,12 @@ const CafeDetailContainer = () => {
       category_3: categories.category_3,
     };
     formData.append('request', new Blob([JSON.stringify(result)], { type: 'application/json' }));
-
+    formData.append('photos', image);
 
     dispatch(writeEvaluation({
       token: user.accessToken,
       cafe_id,
-      request : formData,
-      photos: null
+      formData
     }));
 
     setRequest({
@@ -139,6 +147,7 @@ const CafeDetailContainer = () => {
         toggleActive={toggleActive}
         onToggleModal={() => setModalShow(true)}
         categoryActive={categorySelected}
+        onUploadImage={onUploadImage}
       />
       <AskConfirmModal
         show={modalShow}

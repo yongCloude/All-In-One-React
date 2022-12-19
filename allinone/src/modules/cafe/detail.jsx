@@ -56,13 +56,11 @@ export const loadCafeDetail = createAction(LOAD_CAFE_DETAIL, (cafe_id) => (cafe_
 export const writeEvaluation = createAction(WRITE_EVALUATION, ({
                                                                  token,
                                                                  cafe_id,
-                                                                 request,
-                                                                 photos,
+                                                                 formData,
                                                                }) => ({
   token,
   cafe_id,
-  request,
-  photos,
+  formData,
 }));
 
 export const modifyEvaluation = createAction(MODIFY_EVALUATION, ({

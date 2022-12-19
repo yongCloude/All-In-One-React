@@ -34,19 +34,16 @@ export const getCafeDetail = ({ cafe_id }) => {
 };
 
 /** 평가 작성 **/
-export const evaluate = ({ token, cafe_id, request, photos }) => {
+export const evaluate = ({ token, cafe_id, formData }) => {
   console.log(cafe_id);
 
   client.post(
     `/v2/cafe-map/${cafe_id}/evaluate`,
-    {
-      "request": request,
-      "phtos": photos
-
-    },
+    formData,
     {
       headers: {
         Authorization: 'Bearer ' + token,
+        "Content-Type": `multipart/form-data`,
       },
     }
   );
