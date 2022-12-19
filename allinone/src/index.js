@@ -15,11 +15,14 @@ import { composeWithDevTools } from '../node_modules/redux-devtools-extension/in
 import createSagaMiddleware from 'redux-saga';
 
 import { tempSetUser } from './modules/auth/auth';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 
 
 
 const sagaMiddleware = createSagaMiddleware();
+const queryClient = new QueryClient();
+
 
 const store = configureStore({
   reducer: rootReducer,
@@ -44,9 +47,11 @@ loadUser();
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </QueryClientProvider>
   </Provider>,
 );
 
