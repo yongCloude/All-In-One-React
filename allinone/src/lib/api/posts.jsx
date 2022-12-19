@@ -1,7 +1,7 @@
 import client from './client';
 import qs from 'qs';
 
-export const writePost = ({ title, content, token }) => {
+export const post = ({ title, content, token }) => {
   client.post(
     'v2/boards',
     { title, content },
@@ -13,7 +13,7 @@ export const writePost = ({ title, content, token }) => {
   );
 };
 
-export const updatePost = ({ id, title, content, token }) => {
+export const editPost = ({ id, title, content, token }) => {
   client.put(
     `/v2/boards/${id}`,
     {
@@ -35,7 +35,7 @@ export const removePost = ({ id, token }) =>
     },
   });
 
-export const writeComment = ({ board_id, comment, token }) =>
+export const postComment = ({ board_id, comment, token }) =>
   client.post(
     `/v2/boards/${board_id}/comments`,
     {
@@ -55,9 +55,9 @@ export const removeComment = ({ board_id, comment_id, token }) =>
     },
   });
 
-export const readPost = (id) => client.get(`/v2/boards/${id}`);
+export const fetchPost = (id) => client.get(`/v2/boards/${id}`);
 
-export const listPosts = ({all, title, writer}) => {
+export const fetchPosts = ({all, title, writer}) => {
   console.log(writer);
   return client.get(`/v2/boards`,
   {

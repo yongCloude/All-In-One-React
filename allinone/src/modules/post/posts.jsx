@@ -19,7 +19,7 @@ export const listPosts = createAction(
     ({all, writer, title}) => ({all, writer, title})
 );
 
-const listPostSaga = createRequestSaga(LIST_POSTS, postAPI.listPosts);
+const listPostSaga = createRequestSaga(LIST_POSTS, postAPI.fetchPosts);
 export function* postsSaga() {
     yield takeLatest(LIST_POSTS, listPostSaga);
 }
