@@ -24,7 +24,6 @@ const PostList = ({posts, loading, error, showWriteButton}) => {
   }
 
   return (
-    <Responsive>
       <div className="PostList">
         <div className="WritePostButtonWrapper">
           {showWriteButton && (
@@ -41,7 +40,6 @@ const PostList = ({posts, loading, error, showWriteButton}) => {
           </div>
         )}
       </div>
-    </Responsive>
   );
 };
 
