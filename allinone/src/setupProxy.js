@@ -5,7 +5,7 @@ module.exports = app => {
     app.use('/v2/**/',
     createProxyMiddleware(
         {
-            target: 'http://3.39.95.217:8080',
+            target: 'http://14.36.131.85:8080',
             changeOrigin: true,
             withCredentials: false,
         }
