@@ -16,7 +16,7 @@ function Header({ user, onLogout }) {
             <Nav.Link href='/posts'>게시판</Nav.Link>
             <NavDropdown title='채팅' id='collasible-nav-dropdown'>
               <NavDropdown.Item href='/chat'>모든 채팅방</NavDropdown.Item>
-              {user && (<NavDropdown.Item href='/mychat'>내가 만든 채팅방</NavDropdown.Item>)}
+              {user && (<NavDropdown.Item href='/mychat'>내 채팅방</NavDropdown.Item>)}
             </NavDropdown>
           </Nav>
           <Nav>
