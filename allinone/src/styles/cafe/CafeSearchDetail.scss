@@ -92,6 +92,33 @@ body {
       margin: 1rem auto auto;
       border: 2px solid #D6D6D6;
 
+      #photo-title{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .PhotoWrapper {
+
+        width: 760px;
+        height: 400px;
+        border: 1px solid black;
+      }
+
+
+      .Header {
+        display: flex;
+        flex-direction: row;
+
+        .IncludePhotoWrapper{
+
+          display: flex;
+          align-items: center;
+
+
+        }
+      }
+
       #category-list {
         display: flex;
         flex-direction: row;
@@ -102,9 +129,6 @@ body {
         span {
           width: fit-content;
           height: fit-content;
-
-
-
 
           margin-right: 1rem;
 
