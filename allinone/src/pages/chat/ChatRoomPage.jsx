@@ -1,17 +1,12 @@
 import React from 'react';
-import Responsive from '../../common/Responsive';
 import HeaderContainer from '../../containers/common/HeaderContainer';
-import ChatRoomContainer from '../../containers/chat/ChatRoomContainer';
-
+import ChatContainer from '../../containers/chat/ChatContainer';
 
 const ChatRoomPage = () => {
   return (
-    <div className='ChatRoomPage'>
+    <div>
       <HeaderContainer />
-      <div className='m-auto mt-lg-5' style={{width: 600}}>
-        <ChatRoomContainer />
-      </div>
-
+      <ChatContainer />
     </div>
   );
 };
