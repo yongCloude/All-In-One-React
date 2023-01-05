@@ -16,7 +16,7 @@ const KakaoMap = ({center, cafes}) => {
         width: '100vw',
         height: '100vh',
       }}
-      level={5}
+      level={7}
     >
       {cafes &&
         cafes.map((cafe) => (
