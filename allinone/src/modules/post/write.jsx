@@ -61,7 +61,7 @@ export const changeField = createAction(CHANGE_FIELD, ({key, value}) => ({
 
 
 
-export const setOriginalPost = createAction(SET_ORIGINAL_POST, (post) => post);
+export const setOriginalPost = createAction(SET_ORIGINAL_POST, post => post);
 
 const writePostSaga = createRequestSagaReturnSuccess(WRITE_POST, postAPI.post);
 const updatePostSaga = createRequestSagaReturnSuccess(UPDATE_POST, postAPI.editPost);

@@ -10,6 +10,7 @@ import { changeField, initialize, listPosts } from '../../modules/post/posts';
 import Pagination from '../../components/posts/Pagination';
 import { Button } from 'react-bootstrap';
 import Responsive from '../../common/Responsive';
+import SearchBarGroup from '../../components/posts/SearchBarGroup';
 const PostListContainer = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(3);
@@ -57,27 +58,10 @@ const PostListContainer = () => {
   return (
     <>
       <Responsive>
-        <Form.Floating className='mb-3'>
-          <Form.Control
-            id='floatingInputCustom'
-            type='title'
-            value={query[option]}
-            onChange={onSearchInput}
-          />
-          <label htmlFor='floatingInputCustom'>게시글 검색</label>
-        </Form.Floating>
-        <Form.Select
-          onChange={(e) => setOption(e.target.value)}
-        >
-          <option value='all'>전체</option>
-          <option value='title'>제목</option>
-          <option value='writer'>글쓴이</option>
-        </Form.Select>
-        <div className='d-grid gap-2 mt-2'>
-          <Button variant='secondary' size='md' onClick={onClickSearch}>
-            검색
-          </Button>
-        </div>
+        <SearchBarGroup onClickSearch={onClickSearch}
+                        onSearchInput={onSearchInput}
+                        query={query[option]}
+                        setOption={setOption} />
         <PostList
           loading={loading}
           error={error}

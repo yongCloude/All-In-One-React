@@ -2,11 +2,10 @@
 
 .CommentWriteActionButton {
 
-    position: relative;
-    bottom: 4.2rem;
-    float: right;
+    position: absolute;
 
-    .Button{
-        height: 3rem;
+    .Button {
+        width: 100px;
+        height: 30px;
     }
 }

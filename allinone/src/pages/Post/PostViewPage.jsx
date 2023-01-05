@@ -4,15 +4,15 @@ import HeaderContainer from '../../containers/common/HeaderContainer';
 import PostViewerContainer from '../../containers/post/PostViewerContainer';
 import CommentEditContainer from '../../containers/write/CommentEditContainer';
 import CommentWriteActionButtonContainer from '../../containers/write/CommentWriteActionButtonContainer';
+import CommentContainer from '../../containers/write/CommentContainer';
 
 const PostViewPage = () => {
   return (
     <div>
       <HeaderContainer />
-      <PostViewerContainer />
       <Responsive>
-        <CommentEditContainer />
-        <CommentWriteActionButtonContainer />
+        <PostViewerContainer />
+        <CommentContainer/>
       </Responsive>
     </div>
   );

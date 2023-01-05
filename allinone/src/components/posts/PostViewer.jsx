@@ -2,56 +2,41 @@ import React from 'react';
 import Responsive from '../../common/Responsive';
 import SubInfo from '../../common/SubInfo';
 import '../../styles/post/PostViewer.scss';
-import CommentList from '../post/CommentList';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+
 
 const PostViewer = ({
-  post,
-  error,
-  loading,
-  postActionButtons,
-  onRemoveComment,
-  user,
-}) => {
-  if (error) {
-    if (error.response && error.response.status === 404) {
-      return <div>존재하지 않는 포스트입니다.</div>;
-    }
-    return <div>오류 발생!</div>;
-  }
+                      post,
+                      onClickLike,
+                      postActionButtons,
+                    }) => {
 
-  // 로딩 중이거나 아직 포스트 데이터가 없을 때
-  if (loading || !post) {
-    return null;
-  }
 
-  const { title, content, b_writer, b_date, likes, views, commentList } = post;
+  const { title, content, b_writer, b_date, likes, views } = post;
 
   return (
-    <Responsive>
-      <div className="PostViewer">
-        <div className="PostHead">
-          <h1>{title}</h1>
-          <SubInfo
-            username={b_writer}
-            publishDate={b_date}
-            likes={likes}
-            views={views}
-          />
-        </div>
-        {postActionButtons}
-        <div
-          className="PostContent"
-          dangerouslySetInnerHTML={{ __html: content }}
+    <div className='PostViewer'>
+      <div className='PostHead'>
+        <h1>{title}</h1>
+        <SubInfo
+          username={b_writer}
+          publishDate={b_date}
+          likes={likes}
+          views={views}
         />
       </div>
-      <CommentList
-        username={user.name}
-        commentList={commentList}
-        onRemoveComment={onRemoveComment}
+      {postActionButtons}
+      <div
+        className='PostContent'
+        dangerouslySetInnerHTML={{ __html: content }}
       />
-      
-      
-    </Responsive>
+      <div className='Evaluation' onClick={onClickLike}>
+        <ThumbUpIcon></ThumbUpIcon>
+        <span>좋아요</span>
+      </div>
+    </div>
+
+
   );
 };
 

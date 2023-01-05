@@ -23,4 +23,25 @@
         margin-bottom: 3rem;
         border-bottom: 1px solid #e9ecef;
     }
+
+    .Evaluation {
+        float: right;
+        width: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        box-sizing: border-box;
+
+
+        span {
+            margin-left: 0.625rem;
+            font-weight: bold;
+        }
+    }
+
+    .Evaluation:hover{
+        cursor: pointer;
+        background-color: lightgray;
+    }
 }

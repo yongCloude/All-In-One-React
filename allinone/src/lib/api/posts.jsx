@@ -55,16 +55,47 @@ export const removeComment = ({ board_id, comment_id, token }) =>
     },
   });
 
-export const fetchPost = (id) => client.get(`/v2/boards/${id}`);
+export const fetchPost = ({ id, accessToken }) => {
+  return client.get(
+    `/v2/boards/${id}`,
+    {
+      headers: {
+        Authorization: 'Bearer ' + accessToken,
+      },
+    },
+  );
+};
 
-export const fetchPosts = ({all, title, writer}) => {
+export const fetchPosts = ({ all, title, writer }) => {
   console.log(writer);
   return client.get(`/v2/boards`,
-  {
-    params: {
-      all: all,
-      title: title,
-      writer: writer
-    }
-  });
+    {
+      params: {
+        all: all,
+        title: title,
+        writer: writer,
+      },
+    });
 };
+
+export const like = ({ accessToken, board_id }) =>
+  client.post(
+    `/v2/boards/${board_id}/likes`,
+    {},
+    {
+      headers: {
+        Authorization: 'Bearer ' + accessToken,
+      },
+    },
+  );
+
+export const unlike = ({ accessToken, board_id }) =>
+  client.delete(
+    `/v2/boards/${board_id}/unlikes`,
+    {
+      headers: {
+        Authorization: 'Bearer ' + accessToken,
+      },
+    },
+  );
+

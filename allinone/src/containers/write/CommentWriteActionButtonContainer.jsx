@@ -10,10 +10,9 @@ const CommentWriteActionButtonContainer = () => {
     const dispatch = useDispatch();
     const { postId } = useParams();
 
-    const {comment, token } = useSelector(({write, auth}) => ({
+    const {comment, user } = useSelector(({write, auth}) => ({
         comment: write.comment,
-        token: auth.user.accessToken,
-        
+        user: auth.user,
     }));
 
     const onPublish = () => {
@@ -22,7 +21,7 @@ const CommentWriteActionButtonContainer = () => {
             writeComment({
                 comment,
                 board_id: postId,
-                token,
+                token: user.accessToken,
             }),
         );
         window.location.reload();

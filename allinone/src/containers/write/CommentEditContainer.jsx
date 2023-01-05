@@ -17,11 +17,7 @@ const CommentEditContainer = () => {
         dispatch,
     ]);
 
-    useEffect(() => {
-        return () => {
-            dispatch(initialize());
-        };
-    }, [dispatch]);
+
 
     return <CommentEditor comment={comment} onChangeField={onChangeField}/>
 };

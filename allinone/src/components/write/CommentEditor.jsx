@@ -1,22 +1,26 @@
 import React from 'react';
+import Form from 'react-bootstrap/Form';
 import '../../styles/post/CommentEditor.scss';
+
 const CommentEditor = ({ comment, onChangeField }) => {
-  const onChange = (e) => {
-    onChangeField({ key: 'comment', value: e.target.value });
-  };
 
   return (
-    
-      <div className="CommentEditor">
-        <input
-          type="text"
-          onChange={onChange}
+
+    <div className='CommentEditor'>
+      <Form>
+        <Form.Group
           value={comment}
-          placeholder="댓글을 입력하세요"
-        />
-      </div>
-    
+          onChange={(e) => onChangeField({ key: 'comment', value: e.target.value })}>
+          <Form.Control
+            className='Input'
+            as='textarea' rows={3} />
+        </Form.Group>
+      </Form>
+    </div>
+
   );
+
+
 };
 
 export default CommentEditor;

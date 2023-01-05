@@ -1,0 +1,18 @@
+
+
+
+.SearchBarGroup {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+
+  .Selector {
+    border: 1px solid black;
+    width: 100px;
+  }
+  .Button {
+    width: 80px;
+    font-size: 1.125rem;
+  }
+}

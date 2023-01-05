@@ -27,7 +27,7 @@ const PostList = ({posts, loading, error, showWriteButton}) => {
       <div className="PostList">
         <div className="WritePostButtonWrapper">
           {showWriteButton && (
-            <Button variant='info' href='/write'>새 글 작성하기</Button>
+            <Button variant='outline-dark' href='/write'>글쓰기</Button>
           )}
         </div>
         <div>

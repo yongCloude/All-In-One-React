@@ -2,16 +2,9 @@
 
 
 .CommentEditor {
-    
-    input{
-        border: none;
-        outline: none;
-
-        font-size: 1rem;
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-        
-        border: 1px solid #ced4da;
-        width: 100%;
-    }
+  width: inherit;
+  .Input {
+    width: 100%;
+    height: 100px;
+  }
 }

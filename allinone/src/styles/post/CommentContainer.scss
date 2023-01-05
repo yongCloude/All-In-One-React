@@ -1,0 +1,11 @@
+.CommentContainer {
+
+
+  width: calc(1024px - 2rem);
+  height: 100px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+}

@@ -1,13 +1,17 @@
 import React from 'react';
-import Button from '../../common/Button';
-import '../../styles/post/CommentWriteActionButton.scss';
 
-const CommentWriteActionButton = ({onPublish}) => {
-    return (
-        <div className='CommentWriteActionButton'>
-            <Button cyan={true} onClick={onPublish}>작성</Button>
-        </div>
-    );
+import '../../styles/post/CommentWriteActionButton.scss';
+import { Button } from 'react-bootstrap';
+
+const CommentWriteActionButton = ({ onPublish }) => {
+  return (
+    <div className='CommentWriteActionButton'>
+      <Button
+        className='Button'
+        onClick={onPublish}>작성</Button
+      >
+    </div>
+  );
 };
 
 export default CommentWriteActionButton;
