@@ -45,6 +45,8 @@ export const searchMessage = ({ token, channel_id, content }) => {
 
 /** 채팅방 만들기 **/
 export const createRoom = ({token, title}) => {
+  console.log('createRoom');
+  console.log(token, title);
     client.post(
         `/v2/chat`,
         {ch_title: title},

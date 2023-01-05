@@ -1,0 +1,27 @@
+
+.ChatHeader {
+
+
+  height: 50px;
+
+
+  display: flex;
+  justify-content: space-between;
+
+  .Title {
+    padding: 0.825rem;
+  }
+
+  .Functions {
+
+    padding: 0.825rem;
+    width: 600px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+
+  }
+
+}
