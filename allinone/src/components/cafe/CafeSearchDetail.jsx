@@ -9,6 +9,7 @@ import { loadCafeDetail } from '../../modules/cafe/detail';
 
 const CafeSearchDetail = ({
                             detail,
+                            user,
                             categories,
                             categoryActive,
                             onChange,
@@ -18,6 +19,7 @@ const CafeSearchDetail = ({
                             toggleActive,
                             onToggleModal,
                             onUploadImage,
+                            isReviewed,
                           }) => {
 
   const dispatch = useDispatch();
@@ -33,7 +35,7 @@ const CafeSearchDetail = ({
 
   return (
     <div className='CafeSearchDetail'>
-      <header>
+      <div className='Header'>
         <div className='InfoAndButtons'>
           <div id='info'>
             <h4>{detail.cafe_name} {detail.cafe_branch}</h4>
@@ -48,7 +50,7 @@ const CafeSearchDetail = ({
           <h2>#{detail.category_2}</h2>
           <h2>#{detail.category_3}</h2>
         </div>
-      </header>
+      </div>
       <div className='Review'>
         <Stack gap={1}>
           <div className='Box'>
@@ -57,20 +59,33 @@ const CafeSearchDetail = ({
               <span>더보기</span>
             </div>
             <div className='PhotoWrapper'>
-              {detail.photos.map((photo)=>(
+              {detail.photos.map((photo) => (
                 <img src={`data:image/png;base64,${photo}`} />
               ))}
             </div>
 
           </div>
-          <SelectCategory categories={categories} toggleActive={toggleActive} categoryActive={categoryActive} />
-          <WriteReview cafe_id={cafe_id}
-                       onChange={onChange}
-                       onClickSubmit={onClickSubmit}
-                       onClickStar={onClickStar}
-                       onUploadImage={onUploadImage}
-          />
+
+          {
+            !isReviewed(detail.reviews) &&
+            <div className='WriteReviewWrapper'>
+              <div className='WriteReview-Title'>
+                <p>리뷰 작성</p>
+              </div>
+              <SelectCategory categories={categories} toggleActive={toggleActive} categoryActive={categoryActive} />
+              <WriteReview cafe_id={cafe_id}
+                           onChange={onChange}
+                           onClickSubmit={onClickSubmit}
+                           onClickStar={onClickStar}
+                           onUploadImage={onUploadImage}
+              />
+            </div>
+          }
+
+
+
           <ReviewList
+            user={user}
             cafe_id={cafe_id}
             total_rating={detail.total_rating}
             reviews={detail.reviews}
@@ -89,7 +104,7 @@ const SelectCategory = ({ categories, toggleActive, categoryActive }) => {
   if (!categories) return null;
 
   return (
-    <div className='Box'>
+    <div className='SelectCategory'>
       <div id='category-list'>
         {categories.map((category, index) => (
           <button key={index} value={category.category_name} onClick={(e) => toggleActive(e)}
@@ -104,15 +119,11 @@ const SelectCategory = ({ categories, toggleActive, categoryActive }) => {
 
 const WriteReview = ({ cafe_id, onChange, onClickSubmit, onClickStar, onUploadImage }) => {
   return (
-    <div className='Box'>
-      <div className='Header'>
-        <div>
-          <p>리뷰 작성</p>
-          <RatingStar onClick={onClickStar} />
-        </div>
-        <div className='IncludePhotoWrapper'>
-          <input type="file" accept="image/*" onChange={(e) => onUploadImage(e)}/>
-        </div>
+    <div className='WriteReview'>
+
+      <div className='IncludePhotoWrapper'>
+        <RatingStar onClick={onClickStar} />
+        <input type='file' accept='image/*' onChange={(e) => onUploadImage(e)} />
       </div>
       <InputGroup className='mt-2'>
         <Form.Control
@@ -131,7 +142,7 @@ const WriteReview = ({ cafe_id, onChange, onClickSubmit, onClickStar, onUploadIm
   );
 };
 
-const ReviewList = ({ cafe_id, total_rating, reviews, onClickDelete }) => {
+const ReviewList = ({ user, cafe_id, total_rating, reviews, onClickDelete }) => {
   return (
     <>
       <div className='Box'>
@@ -140,6 +151,7 @@ const ReviewList = ({ cafe_id, total_rating, reviews, onClickDelete }) => {
           <p>{total_rating}점</p>
           {reviews.length != 0 && reviews.map((review) => (
             <ReviewItem key={review.index}
+                        user={user}
                         cafe_id={cafe_id}
                         review_id={review.review_id}
                         user_name={review.user_name}
@@ -154,7 +166,7 @@ const ReviewList = ({ cafe_id, total_rating, reviews, onClickDelete }) => {
 };
 
 
-const ReviewItem = ({ cafe_id, review_id, user_name, content, rating, onClickDelete }) => {
+const ReviewItem = ({ user, cafe_id, review_id, user_name, content, rating, onClickDelete }) => {
   return (
     <div className='ReviewItem'>
       <div id='reviewer-name'>{user_name}</div>
@@ -164,10 +176,15 @@ const ReviewItem = ({ cafe_id, review_id, user_name, content, rating, onClickDel
         </div>
         <div id='comment'>{content}</div>
       </div>
-      <div className='action-buttons-wrapper'>
-        <Button id='button'>수정</Button>
-        <Button id='button' onClick={() => onClickDelete(cafe_id, review_id)}>삭제</Button>
-      </div>
+      {user.name == user_name ?
+        <div className='action-buttons-wrapper'>
+          <Button id='button'>수정</Button>
+          <Button id='button' onClick={() => onClickDelete(cafe_id, review_id)}>삭제</Button>
+        </div>
+        :
+        <div className='Padding' />
+      }
+
     </div>
   );
 };

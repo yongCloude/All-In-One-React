@@ -7,20 +7,31 @@
   height: 100vh;
 
 
+
   z-index: 3;
 
-  form {
-    width: 200px;
-    margin: 2rem auto 2rem;
+  .SearchWrapper {
 
-    .CafeSearchInput {
-      opacity: 0.6;
-      text-align: center;
-      background: none;
-      border: none;
-      border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0 2rem;
+
+    form {
+
+      width: 200px;
+      .CafeSearchInput {
+        opacity: 0.6;
+        text-align: center;
+        background: none;
+        border: none;
+        border-bottom: 1px solid black;
+      }
     }
   }
+
+
 
   .SelectorWrapper {
     margin: auto;
@@ -55,8 +66,12 @@
     height: calc(100vh - 100px);
     overflow-y: scroll;
 
+    .CafeListItem:hover {
+      background: white;
+    }
 
     .CafeListItem {
+
       width: inherit;
       height: 200px;
       background: #FFE4F4;
@@ -68,6 +83,7 @@
 
 
       #cafe-info {
+
         width: inherit;
         height: inherit;
 

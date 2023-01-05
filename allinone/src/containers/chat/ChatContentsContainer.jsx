@@ -1,24 +1,19 @@
-import React, { useRef, useState } from 'react';
-import ChatList from '../../components/chat/ChatList';
-import SockJsClient from 'react-stomp';
-import { useDispatch, useSelector } from '../../../node_modules/react-redux/es/exports';
-import { useEffect } from 'react';
-import { useParams } from '../../../node_modules/react-router-dom/index';
+import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux/es/exports';
+import { useParams } from 'react-router-dom';
 import { loadMessage, updateChat } from '../../modules/chat/message';
-import { changeField, initialize, writeMessage } from '../../modules/chat/write';
 import { exit, getRoomParticipants, invite } from '../../modules/chat/room';
-import ShowChatRoomParticipantsActionButton from '../../components/chat/ShowChatRoomParticipantsActionButton';
 import { addFriend, getFriends } from '../../modules/auth/auth';
-
-import '../../styles/chat/ChatRoomContainer.scss';
-import FriendList from '../../components/chat/FriendList';
+import { changeField, initialize, writeMessage } from '../../modules/chat/write';
 import { searchMessage } from '../../lib/api/chat';
 import { Button, InputGroup, Stack } from 'react-bootstrap';
 import ChatHeader from '../../common/ChatHeader';
+import ChatList from '../../components/chat/ChatList';
 import Form from 'react-bootstrap/Form';
+import SockJsClient from 'react-stomp';
+import ChatFooter from '../../components/chat/ChatFooter';
 
-
-const ChatRoomContainer = () => {
+const ChatContentsContainer = () => {
 
   const dispatch = useDispatch();
   const { channelId } = useParams();
@@ -34,6 +29,7 @@ const ChatRoomContainer = () => {
       friends: auth.friends,
     }),
   );
+
 
   const [searchInputMessage, setSearchInputMessage] = useState();
 
@@ -101,13 +97,15 @@ const ChatRoomContainer = () => {
     setSearchInputMessage('');
   };
 
-  const onClick = () => {
+  const onSubmit = (e) => {
     dispatch(writeMessage({
       content: message,
       token: user.accessToken,
       channel_id: channelId,
     }));
     dispatch(initialize());
+
+    e.preventDefault();
   };
 
   const onClickExit = () => {
@@ -162,11 +160,11 @@ const ChatRoomContainer = () => {
   const getAddableFriends = () => {
     let friendsName = [];
 
-    friends.forEach((friend) => {
-      friendsName.push(friend.user_name);
-    });
-
-    return participants.filter(participant => !(friendsName.includes(participant.user_name)));
+    // friends.forEach((friend) => {
+    //   friendsName.push(friend.user_name);
+    // });
+    //
+    // return participants.filter(participant => !(friendsName.includes(participant.user_name)));
   };
 
 
@@ -177,29 +175,17 @@ const ChatRoomContainer = () => {
   if (!messages) return null;
 
   return (
-    <div>
-
-      <Stack>
-        <ChatHeader participants={participants} onChangeSearchMessage={setSearchInputMessage}
-                    onClickSearchButton={onClickSearchButton} invitalbe={getInvitables}
-                    addableFriends={getAddableFriends} onClickInvite={onClickInvite} />
-        <ChatList messages={messages} comment={message} onConfirm={onConfirm}
-                  modal={modal} searchMessage={searchInputMessage} ref={scrollRef} />
-        <InputGroup className='mb-3' style={{ height: 100 }} onChange={onChange}>
-          <Form.Control
-            as="textarea" rows={3}
-            aria-label="Recipient's username"
-            aria-describedby='basic-addon2'
-          />
-          <Button variant='dark' id='button-addon2' onClick={onClick}>
-            전송
-          </Button>
-        </InputGroup>
-        <Button variant='outline-primary' onClick={onClickExit}>채팅방 나가기</Button>
-      </Stack>
+    <div className='ChatContentsContainer'
+         style={{ width: '100%', height: 'calc(100vh - 3rem);' }}>
+      <ChatHeader participants={participants} onChangeSearchMessage={setSearchInputMessage}
+                  onClickSearchButton={onClickSearchButton} invitalbe={getInvitables}
+                  addableFriends={getAddableFriends} onClickInvite={onClickInvite} />
+      <ChatList user_email={user.email} messages={messages} comment={message} onConfirm={onConfirm}
+                modal={modal} searchMessage={searchInputMessage} ref={scrollRef} />
+      <ChatFooter onSubmit={onSubmit} onChange={onChange} onClickExit={onClickExit} />
 
       <SockJsClient
-        url={'http://3.39.95.217:8080/chat/'}
+        url={`http://14.36.131.85:8080/chat/`}
         headers={customHeaders}
         topics={[`/topic/kafka-chat/${channelId}`]}
         onConnect={console.log('connected!')}
@@ -212,4 +198,4 @@ const ChatRoomContainer = () => {
   );
 };
 
-export default ChatRoomContainer;
+export default ChatContentsContainer;

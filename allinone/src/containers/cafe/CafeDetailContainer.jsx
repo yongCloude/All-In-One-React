@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux/es/exports';
 import { deleteEvaluation, loadCafeDetail, scrap, writeEvaluation } from '../../modules/cafe/detail';
 import CafeSearchDetail from '../../components/cafe/CafeSearchDetail';
 import { useParams } from 'react-router-dom';
-import { evaluate } from '../../lib/api/cafe';
 import AskConfirmModal from '../../common/modal/AskConfirmModal';
 import { loadCategory } from '../../modules/cafe/search';
 
@@ -135,10 +134,20 @@ const CafeDetailContainer = () => {
     setRequest(result);
   };
 
+  const isReviewed = (reviews) => {
+
+    for (let i = 0; i < reviews.length; i++) {
+      if (reviews[i].user_name == user.name)
+        return true;
+    }
+    return false
+  }
+
   return (
     <>
       <CafeSearchDetail
         detail={detail}
+        user={user}
         categories={categories}
         onChange={onChange}
         onClickSubmit={onClickSubmit}
@@ -148,6 +157,7 @@ const CafeDetailContainer = () => {
         onToggleModal={() => setModalShow(true)}
         categoryActive={categorySelected}
         onUploadImage={onUploadImage}
+        isReviewed={isReviewed}
       />
       <AskConfirmModal
         show={modalShow}

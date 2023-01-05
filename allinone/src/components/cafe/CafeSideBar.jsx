@@ -3,19 +3,24 @@ import '../../styles/cafe/CafeSideBar.scss';
 import { Stack, Form } from 'react-bootstrap';
 import ShowStars from './ShowStars';
 import { useNavigate } from 'react-router-dom';
+import SearchIcon from '@mui/icons-material/Search';
 
 const CafeSideBar = ({ categories, provinces, cities, onChange, onSubmit, onClickInput, request, cafes }) => {
 
 
   return (
     <div className='CafeSideBar'>
-      <form onSubmit={(e) => onSubmit(e)}>
-        <Form.Control className='CafeSearchInput'
-                      onChange={(e) => onChange(e)}
-                      onClick={onClickInput}
-                      name='cafe' size='md'
-                      type='text' placeholder='카페명 입력' />
-      </form>
+      <div className='SearchWrapper'>
+        <form onSubmit={(e) => onSubmit(e)}>
+          <Form.Control className='CafeSearchInput'
+                        onChange={(e) => onChange(e)}
+                        onClick={onClickInput}
+                        name='cafe' size='md'
+                        type='text' placeholder='카페명 입력' />
+        </form>
+        <SearchIcon onClick={(e) => onSubmit(e)}/>
+      </div>
+
       {cafes == null ?
         (
           <>
@@ -62,7 +67,7 @@ const CafeItem = ({ props }) => {
   const navigate = useNavigate();
   return (
     <>
-      <div className='CafeListItem'>
+      <div className='CafeListItem' onClick={()=>navigate(`/cafe/detail/${cafe_id}`)}>
         <div id='cafe-info'>
           <div id='name'>
             <span className='fw-bold fs-5'>{cafe_name}</span>
@@ -75,11 +80,7 @@ const CafeItem = ({ props }) => {
               <div id='category'
                    key={index}>#{category}</div>
             ))}
-
           </div>
-        </div>
-        <div id='show-detail' onClick={()=>navigate(`/cafe/detail/${cafe_id}`)}>
-          상세보기
         </div>
       </div>
     </>

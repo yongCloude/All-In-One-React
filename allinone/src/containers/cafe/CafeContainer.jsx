@@ -79,7 +79,8 @@ const CafeContainer = () => {
       city: '',
       category: '',
     });
-    setFinalCenter(tmpCenter);
+    if(Object.keys(tmpCenter).length != 0)
+      setFinalCenter(tmpCenter);
     e.preventDefault();
   };
 
