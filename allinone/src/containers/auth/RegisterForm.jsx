@@ -47,6 +47,7 @@ const RegisterForm = () => {
             console.log(auth);
             navigate('/login');
         }
+        navigate('/login');
     }, [auth, authError, navigate]);
 
     
