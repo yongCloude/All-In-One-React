@@ -11,6 +11,7 @@ import wMessage, {writeMessageSaga} from './chat/write';
 import createRoom, {createRoomSaga} from './chat/create';
 import cafeSearch, { cafeSearchSaga } from './cafe/search';
 import cafeDetail, { cafeDetailSaga } from './cafe/detail';
+import home, { homeSaga } from './home/home';
 const rootReducer = combineReducers({
   auth,
   loading,
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   createRoom,
   cafeSearch,
   cafeDetail,
+  home
 });
 
 export function* rootSaga() {
@@ -37,6 +39,7 @@ export function* rootSaga() {
     createRoomSaga(),
     cafeSearchSaga(),
     cafeDetailSaga(),
+    homeSaga(),
   ]);
 }
 

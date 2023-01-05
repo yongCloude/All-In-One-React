@@ -1,0 +1,24 @@
+
+
+
+
+.PopularCafe {
+  display: flex;
+  margin: 1rem auto auto;
+  justify-content: center;
+  flex-wrap: wrap;
+  
+
+
+  .CafeItem {
+
+    border: 3px solid darkcyan;
+    & {
+      margin-right: 0.125rem;
+    }
+
+    width: 280px;
+    height: 120px;
+
+  }
+}

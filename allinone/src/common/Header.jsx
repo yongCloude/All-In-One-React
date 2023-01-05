@@ -6,7 +6,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 function Header({ user, onLogout }) {
 
   return (
-    <Navbar collapseOnSelect expand='lg' bg='dark' variant='dark'>
+    <Navbar style={{height: "3rem"} } collapseOnSelect expand='lg' bg='dark' variant='dark'>
       <Container>
         <Navbar.Brand href='/'>AllInOne</Navbar.Brand>
         <Navbar.Toggle aria-controls='responsive-navbar-nav' />
@@ -14,10 +14,7 @@ function Header({ user, onLogout }) {
           <Nav className='me-auto'>
             <Nav.Link href='/cafe'>자기야 카페갈래?</Nav.Link>
             <Nav.Link href='/posts'>게시판</Nav.Link>
-            <NavDropdown title='채팅' id='collasible-nav-dropdown'>
-              <NavDropdown.Item href='/chat'>모든 채팅방</NavDropdown.Item>
-              {user && (<NavDropdown.Item href='/mychat'>내 채팅방</NavDropdown.Item>)}
-            </NavDropdown>
+            <Nav.Link href='/chat'>채팅방</Nav.Link>
           </Nav>
           <Nav>
             {user && (<Nav.Link href='/mypage'>마이 페이지</Nav.Link>)}
